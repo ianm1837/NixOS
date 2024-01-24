@@ -28,5 +28,6 @@
     moonlight-qt
     kitty 
     obsidian
+    scribus
   ];
 }
