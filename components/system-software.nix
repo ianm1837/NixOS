@@ -16,6 +16,7 @@
     wget
     pciutils
     git
+    gh
     distrobox
     docker
     vscode
