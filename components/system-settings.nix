@@ -10,6 +10,8 @@
     xkbVariant = "";
   };
 
+  services.blueman.enable = true;
+
   boot = {
     kernelPackages = pkgs.linuxPackages_6_7;
     loader = {
