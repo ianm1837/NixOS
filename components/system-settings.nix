@@ -11,6 +11,7 @@
   };
 
   services.blueman.enable = true;
+  services.passSecretService.enable = true;
 
   boot = {
     kernelPackages = pkgs.linuxPackages_6_7;
