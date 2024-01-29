@@ -64,6 +64,9 @@
     hwinfo
     nwg-displays
     wlr-randr
+    angryipscanner
+    btop
+    socat
   ];
 
   fonts.packages = with pkgs; [

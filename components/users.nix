@@ -16,6 +16,7 @@
           "bun"
           "dotenv"
           "git"
+	        "vscode"
         ];
       };
     };
@@ -31,6 +32,7 @@
 
   home-manager = {
     extraSpecialArgs = { inherit inputs; };
+
     users = {
       "ianm1837" = import ./home.nix;
     };
