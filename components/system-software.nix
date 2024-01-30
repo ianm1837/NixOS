@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, pkgs-obsidian, ... }:
 
 {
   services.flatpak.enable = true;
@@ -9,6 +9,12 @@
     ];
   };
 
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = true;
+    rootless.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     neovim
     wget
@@ -16,7 +22,6 @@
     git
     gh
     distrobox
-    docker
     vscode
     brave
     mattermost-desktop
@@ -26,7 +31,7 @@
     direnv
     moonlight-qt
     kitty 
-    obsidian
+    pkgs-obsidian.obsidian
     scribus
     waybar
     dunst
@@ -67,6 +72,7 @@
     angryipscanner
     btop
     socat
+    libGL # fix for obsidian
   ];
 
   fonts.packages = with pkgs; [

@@ -24,7 +24,7 @@
   users.users.ianm1837 = {
     isNormalUser = true;
     description = "ianm1837";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     shell = pkgs.zsh;
     packages = with pkgs; [];
   };

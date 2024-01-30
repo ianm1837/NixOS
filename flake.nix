@@ -8,23 +8,41 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    auto-cpufreq = {
+      url = "github:AdnanHodzic/auto-cpufreq";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    # specific obsidian repo for wayland compatibility. will be merged soon, need to check master asap.
+    obsidian-package ={
+      url = "github:yshui/nixpkgs/obsidion-libgl";
+    };
   };
 
-  outputs = inputs@{self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{self, nixpkgs, home-manager, auto-cpufreq, obsidian-package, ... }:
   let
-    lib = nixpkgs.lib;
-    hostname = "nixos";
+    system = "x86_64-linux";
+
+    specialArgs = {
+      inherit inputs;
+      inherit system;
+
+      pkgs-obsidian = import obsidian-package {
+        inherit system;
+        config.allowUnfree = true;
+        config.permittedInsecurePackages = [
+          "electron-25.9.0"
+        ];
+      };
+    };
   in 
   {
     nixosConfigurations = {
-      ${hostname} = lib.nixosSystem {
-        specialArgs = {
-          inherit hostname;
-          inherit inputs;
-        };
-        system = "x86_64-linux";
+      nixos = nixpkgs.lib.nixosSystem {
+        inherit specialArgs;
         modules = [ 
           inputs.home-manager.nixosModules.default
+          auto-cpufreq.nixosModules.default
           ./components/hardware-configuration.nix
           ./components/hardware-options.nix
           ./components/system-settings.nix

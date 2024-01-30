@@ -1,10 +1,16 @@
-{ config, pkgs, hostname, ... }:
+{ config, pkgs, ... }:
 
 {
+  programs.auto-cpufreq.enable = true;
+
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="leds", KERNEL=="tpacpi::kbd_backlight", MODE="0666", RUN+="${pkgs.coreutils}/bin/chmod a+w /sys/class/leds/%k/brightness"
+  '';
+
   networking = {
     firewall.enable = false;
     networkmanager.enable = true;
-    hostName = "${hostname}";
+    hostName = "nixos";
   };
 
   services = {
@@ -22,6 +28,7 @@
   hardware = {
     bluetooth.enable = true;
     pulseaudio.enable = false;
+    opengl.enable = true;
   };
 
   sound.enable = true;

@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "auto-cpufreq": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1706070804,
+        "narHash": "sha256-+ri5fvKBoZfWKTXubGSNA+fqQdEG7DfkNE+u2KOvNJ4=",
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "rev": "68dec52bce39141fecb58b0a6ef096fb3f57ba14",
+        "type": "github"
+      },
+      "original": {
+        "owner": "AdnanHodzic",
+        "repo": "auto-cpufreq",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -35,10 +55,28 @@
         "type": "indirect"
       }
     },
+    "obsidian-package": {
+      "locked": {
+        "lastModified": 1705846253,
+        "narHash": "sha256-nu3zDVpNYlqTb+AIxD1tcNfMLZZ92IV4RY30gPPWHQo=",
+        "owner": "yshui",
+        "repo": "nixpkgs",
+        "rev": "541dd115b419cbbabf31eb034cf09eab182931ca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "yshui",
+        "ref": "obsidion-libgl",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
+        "auto-cpufreq": "auto-cpufreq",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "obsidian-package": "obsidian-package"
       }
     }
   },
