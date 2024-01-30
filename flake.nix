@@ -2,6 +2,7 @@
   description = "Gold Standard";
 
   inputs = {
+    # I like to live dangerously ¯\_(ツ)_/¯
     nixpkgs.url = "nixpkgs/master";
 
     home-manager = {
@@ -14,35 +15,26 @@
     };
 
     # specific obsidian repo for wayland compatibility. will be merged soon, need to check master asap.
-    obsidian-package ={
-      url = "github:yshui/nixpkgs/obsidion-libgl";
-    };
+    obsidian-package.url = "github:yshui/nixpkgs/obsidion-libgl";
   };
 
-  outputs = inputs@{self, nixpkgs, home-manager, auto-cpufreq, obsidian-package, ... }:
+  # include all inputs to output function in one attribute set called inputs to be concise
+  outputs = { ... }@inputs:
   let
     system = "x86_64-linux";
 
     specialArgs = {
       inherit inputs;
       inherit system;
-
-      pkgs-obsidian = import obsidian-package {
-        inherit system;
-        config.allowUnfree = true;
-        config.permittedInsecurePackages = [
-          "electron-25.9.0"
-        ];
-      };
     };
   in 
   {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      nixos = inputs.nixpkgs.lib.nixosSystem {
         inherit specialArgs;
         modules = [ 
           inputs.home-manager.nixosModules.default
-          auto-cpufreq.nixosModules.default
+          inputs.auto-cpufreq.nixosModules.default
           ./components/hardware-configuration.nix
           ./components/hardware-options.nix
           ./components/system-settings.nix

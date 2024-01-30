@@ -27,4 +27,32 @@
 
   services.gvfs.enable = true;
   services.samba.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    dunst
+    libnotify
+    rofi-wayland
+    kanshi
+    blueman
+    pavucontrol
+    libpulseaudio
+    gnome.gnome-keyring
+    swww
+    waypaper
+    # nwg-look
+    gtk3
+    gtk4
+    # tokyo-night-gtk
+    # gvfs
+    # gnome.dconf-editor
+    # xfce.thunar-archive-plugin
+    polkit-kde-agent
+    hyprpicker
+    grim
+    slurp
+    wl-clipboard
+    wlogout
+    swaylock-effects
+    waybar
+  ];
 }

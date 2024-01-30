@@ -1,7 +1,17 @@
-{ config, pkgs, pkgs-obsidian, ... }:
+{ config, pkgs, inputs, system, ... }:
 
+let
+  pkgs-obsidian = import inputs.obsidian-package {
+    inherit system;
+    config.allowUnfree = true;
+    config.permittedInsecurePackages = [
+      "electron-25.9.0"
+    ];
+  };
+in
 {
   services.flatpak.enable = true;
+
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
@@ -31,43 +41,16 @@
     direnv
     moonlight-qt
     kitty 
-    pkgs-obsidian.obsidian
+    pkgs-obsidian.obsidian #custom package to fix OpenGL issue
     scribus
-    waybar
-    dunst
-    libnotify
-    rofi-wayland
-    kanshi
     unzip
-    blueman
     bun
     font-manager
     networkmanagerapplet
     killall
-    blueman
-    libpulseaudio
-    pavucontrol
-    gnome.gnome-keyring
-    swww
-    waypaper
-    nwg-look
-    gtk3
-    gtk4
-    tokyo-night-gtk
-    gvfs
-    gnome.dconf-editor
-    xfce.thunar-archive-plugin
-    polkit-kde-agent
-    hyprpicker
-    grim
-    slurp
-    wl-clipboard
     qpwgraph
-    wlogout
-    swaylock-effects
     wev
     hwinfo
-    nwg-displays
     wlr-randr
     angryipscanner
     btop
