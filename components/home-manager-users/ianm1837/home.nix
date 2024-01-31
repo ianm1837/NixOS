@@ -1,9 +1,10 @@
-{ config, pkgs, ... }:
+{ config, pkgs, user-attributes, ... }:
 
 
 let
   theme = "tokyo-night";
   homePath = "/home/ianm1837";
+  colors = user-attributes.colors;
 in
 { 
   imports = [
@@ -15,7 +16,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    settings = imports ./apps/hyprland/default.nix;
+    settings = import ./apps/hyprland/default.nix { inherit colors; };
   };
 
   programs = {
@@ -60,8 +61,8 @@ in
     homeDirectory = "${homePath}";
     packages = [];
     file = {
-      ".config/hypr" = {
-        source = ./raw-dots/hypr;
+      ".config/hypr/scripts" = {
+        source = ./raw-dots/hypr/scripts;
         recursive = true;
       };
       ".config/dunst" = {

@@ -13,7 +13,7 @@
     "$mainMod, Space, exec, rofi -show drun"
     "$mainMod, P, pseudo, # dwindle"
     "$mainMod, J, togglesplit, # dwindle"
-    "$mainMod SHIFT, W, exec, "/home/ianm1837/.config/hypr/scripts/restart-waybar.sh""
+    "$mainMod SHIFT, W, exec, /home/ianm1837/.config/hypr/scripts/restart-waybar.sh"
     "$mainMod, F1, exec, hyprctl reload && kanshictl reload"
     "$mainMod, F2, exec, kanshictl reload"
 
@@ -34,9 +34,10 @@
     "$mainMod, S, togglespecialworkspace, magic"
     "$mainMod SHIFT, S, movetoworkspace, special:magic"
 
-    # Move/resize windows with mainMod + LMB/RMB and dragging
-    "$mainMod, mouse:272, movewindow"
-    "$mainMod, mouse:273, resizewindow"
+    # Scroll through existing workspaces with mainMod + scroll
+    "$mainMod, mouse_down, workspace, e+1"
+    "$mainMod, mouse_up, workspace, e-1"
+
 
     # for screenshots
 
@@ -50,8 +51,8 @@
   ];
 
   bindm = [
-    # Scroll through existing workspaces with mainMod + scroll
-    "$mainMod, mouse_down, workspace, e+1"
-    "$mainMod, mouse_up, workspace, e-1"
+    # Move/resize windows with mainMod + LMB/RMB and dragging
+    "$mainMod, mouse:272, movewindow"
+    "$mainMod, mouse:273, resizewindow"
   ];
 }

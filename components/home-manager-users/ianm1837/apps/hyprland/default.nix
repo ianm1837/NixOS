@@ -1,8 +1,6 @@
-{
-  imports = [
-    ./behavior.nix
-    ./appearance.nix
-    ./binds.nix
-    ./exec-once.nix
-  ]
-}
+{ colors }:
+
+(import ./appearance.nix { inherit colors; }) //
+import ./behavior.nix //
+import ./binds.nix //
+import ./exec-once.nix

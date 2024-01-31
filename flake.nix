@@ -25,7 +25,7 @@
 
     user-attributes = {
       desktop-environment = "hyprland";
-
+      colors = {};
     };
 
     pkgs-options = input: {
