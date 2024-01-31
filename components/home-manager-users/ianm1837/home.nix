@@ -34,9 +34,9 @@ in
         chpwd_functions=(''${chpwd_functions[@]} "list_all")
       '';
       profileExtra = ''
-        # if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-        #   exec Hyprland
-        # fi
+        if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+          exec Hyprland
+        fi
       '';
       oh-my-zsh = {
         enable = true;
