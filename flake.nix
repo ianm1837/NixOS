@@ -28,7 +28,7 @@
 
     };
 
-    pkgs = import inputs.nixpkgs {
+    pkgs-options = input: {
       inherit system;
       config = {
         allowUnfree = true;
@@ -38,15 +38,8 @@
       };
     };
 
-    pkgs-obsidian = import inputs.obsidian-package {
-      inherit system;
-      config = {
-        allowUnfree = true;
-        permittedInsecurePackages = [
-          "electron-25.9.0"
-        ];
-      };
-    };
+    pkgs = import inputs.nixpkgs (pkgs-options inputs.nixpkgs);
+    pkgs-obsidian = import inputs.obsidian-package (pkgs-options inputs.obsidian-package);
 
     specialArgs = {
       inherit 
@@ -56,7 +49,6 @@
         pkgs-obsidian
         user-attributes
       ;
-
     };
   in 
   {
