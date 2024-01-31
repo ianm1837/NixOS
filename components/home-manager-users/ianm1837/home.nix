@@ -7,7 +7,7 @@ let
 in
 { 
   imports = [
-    ../themes/${theme}.nix
+    ./themes/${theme}.nix
   ];
 
   # Let Home Manager install and manage itself.
