@@ -1,18 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  environment.sessionVariables ={
-    NIX_OZONE_WL = "1";
-  };
-
-  hardware = {
-    opengl.enable = true;
-  };
+  environment.sessionVariables.NIX_OZONE_WL = "1";
+  hardware.opengl.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -20,13 +10,29 @@
   };
 
   programs = {
-    thunar.enable = true;
-    thunar.plugins = with pkgs.xfce; [thunar-archive-plugin thunar-volman thunar-media-tags-plugin tumbler];
+    
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin 
+        thunar-volman 
+        thunar-media-tags-plugin 
+        tumbler
+      ];
+    };
+
+    hyprland = {
+      enable = true;
+      xwayland.enable = true;
+    };
+
     file-roller.enable = true;
   };
 
-  services.gvfs.enable = true;
-  services.samba.enable = true;
+  services = {
+    gvfs.enable = true;
+    samba.enable = true;
+  };
 
   environment.systemPackages = with pkgs; [
     dunst
