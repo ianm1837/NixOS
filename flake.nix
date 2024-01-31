@@ -23,9 +23,34 @@
   let
     system = "x86_64-linux";
 
-    specialArgs = {
-      inherit inputs;
+    pkgs = import inputs.nixpkgs {
       inherit system;
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-25.9.0"
+        ];
+      };
+    };
+
+    pkgs-obsidian = import inputs.obsidian-package {
+      inherit system;
+      config = {
+        allowUnfree = true;
+        permittedInsecurePackages = [
+          "electron-25.9.0"
+        ];
+      };
+    };
+
+    specialArgs = {
+      inherit 
+        inputs 
+        system 
+        pkgs 
+        pkgs-obsidian
+      ;
+
     };
   in 
   {
@@ -35,11 +60,8 @@
         modules = [ 
           inputs.home-manager.nixosModules.default
           inputs.auto-cpufreq.nixosModules.default
-          ./components/hardware-configuration.nix
-          ./components/hardware-options.nix
-          ./components/system-settings.nix
-          ./components/system-software.nix
-          ./components/users.nix
+          ./components/hardware
+          ./components/system
           # ./components/kde.nix
           ./components/hyprland.nix
         ];

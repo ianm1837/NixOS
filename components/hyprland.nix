@@ -39,13 +39,8 @@
     gnome.gnome-keyring
     swww
     waypaper
-    # nwg-look
     gtk3
     gtk4
-    # tokyo-night-gtk
-    # gvfs
-    # gnome.dconf-editor
-    # xfce.thunar-archive-plugin
     polkit-kde-agent
     hyprpicker
     grim

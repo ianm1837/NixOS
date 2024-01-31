@@ -34,7 +34,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "ianm1837" = import ./home.nix;
+      "ianm1837" = import ./home-manager-users/ianm1837.nix;
     };
   };
 }

@@ -1,23 +1,7 @@
-{ config, pkgs, inputs, system, ... }:
+{ config, pkgs, pkgs-obsidian, ... }:
 
-let
-  pkgs-obsidian = import inputs.obsidian-package {
-    inherit system;
-    config.allowUnfree = true;
-    config.permittedInsecurePackages = [
-      "electron-25.9.0"
-    ];
-  };
-in
 {
   services.flatpak.enable = true;
-
-  nixpkgs.config = {
-    allowUnfree = true;
-    permittedInsecurePackages = [
-      "electron-25.9.0"
-    ];
-  };
 
   virtualisation.docker = {
     enable = true;
