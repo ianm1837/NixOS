@@ -22,6 +22,7 @@
   outputs = { ... }@inputs:
   let
     system = "x86_64-linux";
+
     user-attributes = {
       desktop-environment = "hyprland";
 
@@ -67,7 +68,7 @@
           inputs.auto-cpufreq.nixosModules.default
           ./components/hardware
           ./components/system
-          ./components/system/desktop-environments/${user-attribuites.desktop-environment}.nix
+          ./components/system/desktop-environments/${user-attributes.desktop-environment}.nix
         ];
       };
     };
