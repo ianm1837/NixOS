@@ -13,12 +13,25 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-
-
   programs = {
     zsh = {
       enable = true;
-
+      shellAliases = {
+        top = "btop";
+        snr = "sudo nixos-rebuild switch --flake ~/.dotfiles/flake.nix";
+      };
+      initExtra = ''
+        function list_all() {
+            emulate -L zsh
+            ls -a
+        }
+        chpwd_functions=(''${chpwd_functions[@]} "list_all")
+      '';
+      profileExtra = ''
+        if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+          exec Hyprland
+        fi
+      '';
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
@@ -41,9 +54,6 @@ in
     username = "ianm1837";
     homeDirectory = "${homePath}";
     packages = [];
-    file = {
-      "./zshrc".source = ../raw-dots/.zshrc;
-      "./zprofile".source = ../raw-dots/.zprofile;
-    };
+    file = {};
   };
 }
