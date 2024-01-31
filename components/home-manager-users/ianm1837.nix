@@ -54,6 +54,11 @@ in
     username = "ianm1837";
     homeDirectory = "${homePath}";
     packages = [];
-    file = {};
+    file = {
+      ".config/hypr" = {
+        source = ../raw-dots/hypr;
+        recursive = true;
+      };
+    };
   };
 }
