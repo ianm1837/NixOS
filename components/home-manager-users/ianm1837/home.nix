@@ -1,4 +1,4 @@
-{ config, pkgs, user-attributes, ... }:
+{ config, pkgs, pkgs-obsidian, user-attributes, ... }:
 
 
 let
@@ -59,7 +59,19 @@ in
     stateVersion = "23.11"; # no touch
     username = "ianm1837";
     homeDirectory = "${homePath}";
-    packages = [];
+    packages = with pkgs; [
+      vscode
+      brave
+      mattermost-desktop
+      signal-desktop
+      angryipscanner
+      btop
+      bun
+      scribus
+      moonlight-qt
+      pkgs-obsidian.obsidian #custom package to fix OpenGL issue
+      neovim
+    ];
     file = {
       ".config/hypr/scripts" = {
         source = ./raw-dots/hypr/scripts;

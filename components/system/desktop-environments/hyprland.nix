@@ -55,5 +55,17 @@
     wlogout
     swaylock-effects
     waybar
+    networkmanagerapplet
+    wlr-randr
+  ];
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    font-awesome_4
+    font-awesome_5
+    noto-fonts-color-emoji 
+    material-icons
+    symbola
+    nerdfonts
   ];
 }

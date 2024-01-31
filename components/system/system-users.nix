@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, home-manager, ... }:
+{ config, pkgs, pkgs-obsidian, inputs, home-manager, user-attributes, ... }:
 
 {
   imports = [ inputs.home-manager.nixosModules.default ];
@@ -18,7 +18,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "ianm1837" = import ../home-manager-users/ianm1837/home.nix;
+      "ianm1837" = import ../home-manager-users/ianm1837/home.nix { inherit config pkgs pkgs-obsidian inputs home-manager user-attributes; };
     };
   };
 }
