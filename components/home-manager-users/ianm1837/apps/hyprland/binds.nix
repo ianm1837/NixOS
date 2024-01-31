@@ -30,24 +30,13 @@
     "$mainMod CONTROL, l, movecurrentworkspacetomonitor, +1"
     "$mainMod, f, fullscreen"
 
-    # Example special workspace (scratchpad)
-    "$mainMod, S, togglespecialworkspace, magic"
-    "$mainMod SHIFT, S, movetoworkspace, special:magic"
-
     # Scroll through existing workspaces with mainMod + scroll
     "$mainMod, mouse_down, workspace, e+1"
     "$mainMod, mouse_up, workspace, e-1"
 
-
     # for screenshots
-
-    "$mainMod SHIFT, S, exec, ~/.config/hypr/scripts/screenshot rc"
-    "SUPER, Print, exec, ~/.config/hypr/scripts/screenshot rf"
-    "CTRL, Print, exec, ~/.config/hypr/scripts/screenshot ri"
-    "SHIFT, Print, exec, ~/.config/hypr/scripts/screenshot sc"
-    "SUPER SHIFT, Print, exec, ~/.config/hypr/scripts/screenshot sf"
-    "CTRL SHIFT, Print, exec, ~/.config/hypr/scripts/screenshot si"
-    "ALT, Print, exec, ~/.config/hypr/scripts/screenshot p"
+    "$mainMod SHIFT, S, exec, grimblast copy area"
+    "$mainMod CONTROL, S, exec, grimblast copy screen"
   ];
 
   bindm = [
