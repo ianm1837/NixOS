@@ -2,25 +2,9 @@
 
 {
   imports = [ inputs.home-manager.nixosModules.default ];
-  programs = {
-    zsh = {
-      enable = true;
-      ohMyZsh = {
-        enable = true;
-        theme = "robbyrussell";
-        plugins = [
-          "sudo"
-          "systemadmin"
-          "docker"
-          "docker-compose"
-          "bun"
-          "dotenv"
-          "git"
-	        "vscode"
-        ];
-      };
-    };
-  };
+
+  programs.zsh.enable = true;
+  
   users.users.ianm1837 = {
     isNormalUser = true;
     description = "ianm1837";
@@ -34,7 +18,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "ianm1837" = import ./home-manager-users/ianm1837.nix;
+      "ianm1837" = import ../home-manager-users/ianm1837.nix;
     };
   };
 }
