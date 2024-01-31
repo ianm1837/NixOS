@@ -15,9 +15,7 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
-    # settings = {
-    #   imports = ./apps
-    # }
+    settings = imports ./apps/hyprland/default.nix;
   };
 
   programs = {
