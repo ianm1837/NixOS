@@ -22,6 +22,10 @@
   outputs = { ... }@inputs:
   let
     system = "x86_64-linux";
+    user-attributes = {
+      desktop-environment = "hyprland";
+
+    };
 
     pkgs = import inputs.nixpkgs {
       inherit system;
@@ -49,6 +53,7 @@
         system 
         pkgs 
         pkgs-obsidian
+        user-attributes
       ;
 
     };
@@ -62,8 +67,7 @@
           inputs.auto-cpufreq.nixosModules.default
           ./components/hardware
           ./components/system
-          # ./components/kde.nix
-          ./components/hyprland.nix
+          ./components/system/desktop-environments/${user-attribuites.desktop-environment}.nix
         ];
       };
     };
