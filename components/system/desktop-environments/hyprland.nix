@@ -51,6 +51,7 @@
     hyprpicker
     grim
     slurp
+    grimblast
     wl-clipboard
     wlogout
     swaylock-effects

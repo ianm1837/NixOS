@@ -35,6 +35,7 @@
     force_default_wallpaper = "0";
     disable_splash_rendering = "1";
     disable_autoreload = "1";
+    vfr = "true";
   };
 
   env = [
