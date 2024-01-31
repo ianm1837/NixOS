@@ -18,7 +18,7 @@
     extraSpecialArgs = { inherit inputs; };
 
     users = {
-      "ianm1837" = import ../home-manager-users/ianm1837.nix;
+      "ianm1837" = import ../home-manager-users/ianm1837/home.nix;
     };
   };
 }

@@ -1,0 +1,15 @@
+20:20:28.209 › Logger Log level set to: info
+Set Windows Application User Model ID (AUMID) { AUMID: 'org.whispersystems.signal-desktop' }
+NODE_ENV production
+NODE_CONFIG_DIR /nix/store/kr8hlzdpqwsm7yxvhrnw2kl8fl8zqzlb-signal-desktop-6.44.0/lib/Signal/resources/app.asar/config
+NODE_CONFIG {}
+ALLOW_CONFIG_MUTATIONS undefined
+HOSTNAME undefined
+NODE_APP_INSTANCE undefined
+SUPPRESS_NO_CONFIG_WARNING undefined
+SIGNAL_ENABLE_HTTP undefined
+userData: /home/ianm1837/.config/Signal
+config/get: Successfully read user config file
+20:20:28.319 › [AutoLauncher] In development mode, autostart config never effects
+20:20:28.324 › [App.Config] config.autostart has been configured: true
+config/get: Successfully read ephemeral config file
