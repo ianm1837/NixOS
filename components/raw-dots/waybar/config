@@ -1,0 +1,44 @@
+{
+    "layer": "top",
+    "margin-top": 7,
+    "margin-left": 10,
+    "margin-right": 10,
+    "modules-left": ["wlr/taskbar"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["battery", "pulseaudio", "tray", "clock"],
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "wlr/taskbar": {
+        "on-click": "activate",
+        "on-click-middle": "close",
+        "icon-size": 16
+    },
+    "hyprland/workspaces":{
+        "format": "{}"
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%a, %b %d  %I:%M %p}"
+    },
+    "tray": {
+        "spacing": 5
+    },
+    "pulseaudio": {
+        "format": "{volume}% {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-muted": "",
+        "format-icons": {
+             "headphones": "",
+             "handsfree": "",
+             "headset": "",
+             "phone": "",
+             "portable": "",
+             "car": "",
+             "default": ["", ""]
+        },
+        "scroll-step": 1,
+        "on-click": "pavucontrol"
+   }
+}

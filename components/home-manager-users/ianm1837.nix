@@ -59,6 +59,26 @@ in
         source = ../raw-dots/hypr;
         recursive = true;
       };
+      ".config/dunst" = {
+        source = ../raw-dots/dunst;
+        recursive = true;
+      };
+      ".config/kanshi" = {
+        source = ../raw-dots/kanshi;
+        recursive = true;
+      };
+      ".config/kitty" = {
+        source = ../raw-dots/kitty;
+        recursive = true;
+      };
+      ".config/rofi" = {
+        source = ../raw-dots/rofi;
+        recursive = true;
+      };
+      ".config/waybar" = {
+        source = ../raw-dots/waybar;
+        recursive = true;
+      };
     };
   };
 }
