@@ -36,6 +36,8 @@
     disable_splash_rendering = "1";
     disable_autoreload = "1";
     vfr = "true";
+    mouse_move_enables_dpms = true;
+    key_press_enables_dpms = true;
   };
 
   env = [

@@ -110,6 +110,10 @@ in
         source = ./raw-dots/swayidle;
         recursive = true;
       };
+      ".config/wlogout" = {
+        source = ./raw-dots/wlogout;
+        recursive = true;
+      };
     };
   };
 }
