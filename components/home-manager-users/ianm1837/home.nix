@@ -55,6 +55,15 @@ in
     };
   };
 
+  # hyprland specific
+#  services.swayidle = {
+#    enable = true;
+#    systemdTarget = "hyprland-session.target";
+#    timeouts = [
+#      { timeout = 5; command = "${pkgs.swaylock-fancy}/bin/swaylock-fancy"; }
+#    ];
+#  };
+
   home = {
     stateVersion = "23.11"; # no touch
     username = "ianm1837";
@@ -95,6 +104,10 @@ in
       };
       ".config/waybar" = {
         source = ./raw-dots/waybar;
+        recursive = true;
+      };
+      ".config/swayidle" = {
+        source = ./raw-dots/swayidle;
         recursive = true;
       };
     };

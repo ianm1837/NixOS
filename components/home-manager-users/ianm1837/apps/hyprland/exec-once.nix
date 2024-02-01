@@ -4,5 +4,6 @@
     "kanshi & waybar & waypaper --restore & nm-applet --indicator & blueman-applet & hyprctl setcursor Bibata-Modern-Classic 24 &"
     "~/.config/hypr/scripts/watch-socket.sh &"
     "~/.config/hypr/scripts/startup-delay.sh"
+    "swayidle -w"
   ];
 }

@@ -29,6 +29,12 @@
     file-roller.enable = true;
   };
 
+  security.pam.services.swaylock = {
+    text = ''
+      auth include login
+    '';
+  };
+
   services = {
     gvfs.enable = true;
     samba.enable = true;
@@ -58,6 +64,9 @@
     waybar
     networkmanagerapplet
     wlr-randr
+    swaylock
+    swaylock-fancy
+    swayidle
   ];
 
   fonts.packages = with pkgs; [

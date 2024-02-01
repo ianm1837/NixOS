@@ -16,6 +16,7 @@
     "$mainMod SHIFT, W, exec, /home/ianm1837/.config/hypr/scripts/restart-waybar.sh"
     "$mainMod, F1, exec, hyprctl reload && kanshictl reload"
     "$mainMod, F2, exec, kanshictl reload"
+    # "$mainMod, L, exec, swaylock"
 
     # Move focus
     "SUPER,Tab,cyclenext,"
