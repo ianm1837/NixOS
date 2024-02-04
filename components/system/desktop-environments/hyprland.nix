@@ -9,6 +9,24 @@
     extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
+  systemd.services.change-acpi-wakup-perms = {
+    enable = true;
+    description = "Change permissoins of /proc/acpi/wakeup";
+    unitConfig = {
+    };
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = [
+        ""
+        "/run/current-system/sw/bin/chmod 0666 /proc/acpi/wakeup"
+        "/run/current-system/sw/bin/bash -c 'echo XHC0 > /proc/acpi/wakeup'"
+        "/run/current-system/sw/bin/bash -c 'echo XHC1 > /proc/acpi/wakeup'"
+      ];
+      RemainAfterExit = "yes";
+    };
+    wantedBy = [ "multi-user.target" ];
+  };
+
   programs = {
     
     thunar = {
@@ -60,13 +78,9 @@
     grimblast
     wl-clipboard
     wlogout
-    swaylock-effects
     waybar
     networkmanagerapplet
     wlr-randr
-    swaylock
-    swaylock-fancy
-    swayidle
   ];
 
   fonts.packages = with pkgs; [

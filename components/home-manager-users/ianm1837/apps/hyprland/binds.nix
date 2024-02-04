@@ -5,7 +5,7 @@
     # Programs
     "$mainMod, T, exec, kitty"
     "$mainMod, B, exec, brave --enable-features=TouchpadOverscrollHistoryNavigation"
-    "$mainMod, C, exec, code # --enable-features=UseOzonePlatform --ozone-platform=wayland"
+    "$mainMod, C, exec, code-insiders --enable-features=UseOzonePlatform --ozone-platform=wayland"
     "$mainMod, Q, killactive, "
     "$mainMod, F4, exec, wlogout "
     "$mainMod, F, exec, dolphin"

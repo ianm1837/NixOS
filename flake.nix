@@ -16,12 +16,15 @@
 
     # specific obsidian repo for wayland compatibility. will be merged soon, need to check master asap.
     obsidian-package.url = "github:yshui/nixpkgs/obsidion-libgl";
+
   };
 
   # include all inputs to output function in one attribute set called inputs to be concise
   outputs = { ... }@inputs:
   let
     system = "x86_64-linux";
+
+    inherit (inputs.vscode-insiders.packages."${system}") vscode-insiders;
 
     user-attributes = {
       desktop-environment = "hyprland";

@@ -19,7 +19,50 @@ in
     settings = import ./apps/hyprland/default.nix { inherit colors; };
   };
 
+  services = {
+    swayidle = {
+      enable = true;
+      systemdTarget = "hyprland-session.target";
+      timeouts = [
+        {
+          timeout = 300;
+          command = "${pkgs.swaylock-effects}/bin/swaylock";
+        }
+        {
+          timeout = 305;
+          command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms off";
+          resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+        {
+          timeout = 900;
+          command = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on; ${pkgs.coreutils}/bin/sleep 1; ${pkgs.systemd}/bin/systemctl suspend";
+          resumeCommand = "${pkgs.hyprland}/bin/hyprctl dispatch dpms on";
+        }
+      ];
+      events = [
+        {
+          event = "before-sleep";
+          command = "${pkgs.swaylock-effects}/bin/swaylock";
+        }
+      ];
+    };
+  };
+
   programs = {
+    lf.enable = true;
+    pywal.enable = true;
+    swaylock = {
+      enable = true;
+      package = pkgs.swaylock-effects;
+      settings = {
+        color = "000000";
+        indicator = true;
+        clock = true;
+        image = "/home/ianm1837/Wallpapers/hiep-duong-uDvcxeACIV0-unsplash.jpg";
+        effect-blur = "5x5";
+        daemonize = true;
+      };
+    };
     zsh = {
       enable = true;
       shellAliases = {
@@ -55,15 +98,6 @@ in
     };
   };
 
-  # hyprland specific
-#  services.swayidle = {
-#    enable = true;
-#    systemdTarget = "hyprland-session.target";
-#    timeouts = [
-#      { timeout = 5; command = "${pkgs.swaylock-fancy}/bin/swaylock-fancy"; }
-#    ];
-#  };
-
   home = {
     stateVersion = "23.11"; # no touch
     username = "ianm1837";
@@ -80,6 +114,7 @@ in
       moonlight-qt
       pkgs-obsidian.obsidian #custom package to fix OpenGL issue
       neovim
+
     ];
     file = {
       ".config/hypr/scripts" = {
