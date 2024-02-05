@@ -1,7 +1,7 @@
 { config, pkgs, pkgs-obsidian, user-attributes, ... }:
 
-
-let
+# beginning of theme management; need to pass from user-attributes and add themes as needed
+let 
   theme = "tokyo-night";
   homePath = "/home/ianm1837";
   colors = user-attributes.colors;
@@ -9,6 +9,7 @@ in
 { 
   imports = [
     ./themes/${theme}.nix
+    ./services/default.nix
   ];
 
   # Let Home Manager install and manage itself.
@@ -20,63 +21,63 @@ in
   };
 
   services = {
-    kanshi = {
-      enable = true;
-      profiles = {
-        laptop-only = {
-          outputs = [
-            {
-              criteria = "eDP-1";
-              status = "enable";
-              scale = 1.6;
-              mode = "2560x1600@165";
-            }
-          ];
-        };
-        one-monitor-a = {
-          outputs = [
-            {
-              criteria = "eDP-1";
-              status = "disable";
-            }
-            {
-              criteria = "DP-1";
-              status = "enable";
-            }
-          ];
-        };
-        one-monitor-b = {
-          outputs = [
-            {
-              criteria = "eDP-1";
-              status = "disable";
-            }
-            {
-              criteria = "DP-2";
-              status = "enable";
-            }
-          ];
-        };
-        both-monitors = {
-          outputs = [
-            {
-              criteria = "eDP-1";
-              status = "disable";
-            }
-            {
-              criteria = "GIGA-BYTE TECHNOLOGY CO., LTD. Gigabyte M32Q 0x00000583";
-              status = "enable";
-              position = "0,0";
-            }
-            {
-              criteria = "GIGA-BYTE TECHNOLOGY CO., LTD. Gigabyte M32Q 0x00000228";
-              status = "enable";
-              position = "2560,0";
-            }
-          ];
-        };
-      };
-    };
+    # kanshi = {
+    #   enable = true;
+    #   profiles = {
+    #     laptop-only = {
+    #       outputs = [
+    #         {
+    #           criteria = "eDP-1";
+    #           status = "enable";
+    #           scale = 1.6;
+    #           mode = "2560x1600@165";
+    #         }
+    #       ];
+    #     };
+    #     one-monitor-a = {
+    #       outputs = [
+    #         {
+    #           criteria = "eDP-1";
+    #           status = "disable";
+    #         }
+    #         {
+    #           criteria = "DP-1";
+    #           status = "enable";
+    #         }
+    #       ];
+    #     };
+    #     one-monitor-b = {
+    #       outputs = [
+    #         {
+    #           criteria = "eDP-1";
+    #           status = "disable";
+    #         }
+    #         {
+    #           criteria = "DP-2";
+    #           status = "enable";
+    #         }
+    #       ];
+    #     };
+    #     both-monitors = {
+    #       outputs = [
+    #         {
+    #           criteria = "eDP-1";
+    #           status = "disable";
+    #         }
+    #         {
+    #           criteria = "GIGA-BYTE TECHNOLOGY CO., LTD. Gigabyte M32Q 0x00000583";
+    #           status = "enable";
+    #           position = "0,0";
+    #         }
+    #         {
+    #           criteria = "GIGA-BYTE TECHNOLOGY CO., LTD. Gigabyte M32Q 0x00000228";
+    #           status = "enable";
+    #           position = "2560,0";
+    #         }
+    #       ];
+    #     };
+    #   };
+    # };
     dunst = {
       enable = true;
       settings = {
@@ -186,6 +187,23 @@ in
   };
 
   programs = {
+    kitty = {
+      enable = true;
+      font = {
+        name = "JetBrainsMono NFM Regular"; #kitty list-fonts
+        size = 16;
+      };
+      keybindings = {
+        "ctrl+equal" = "change_font_size all +2.0";
+        "ctrl+minus" = "change_font_size all -2.0";
+        "ctrl+backspace" = "change_font_size all 0";
+      };
+      settings = {
+        confirm_os_window_close = "0";
+        background_opacity = "0.9";
+        background_blur = "1";
+      };
+    };
     lf.enable = true;
     pywal.enable = true;
     swaylock = {
@@ -213,11 +231,6 @@ in
         }
         chpwd_functions=(''${chpwd_functions[@]} "list_all")
       '';
-      # profileExtra = ''
-      #   if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-      #     exec Hyprland > .hyprland.log.txt 2> .hyprland.err.txt
-      #   fi
-      # '';
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
@@ -256,18 +269,6 @@ in
     file = {
       ".config/hypr/scripts" = {
         source = ./raw-dots/hypr/scripts;
-        recursive = true;
-      };
-      # ".config/dunst" = {
-      #   source = ./raw-dots/dunst;
-      #   recursive = true;
-      # };
-      # ".config/kanshi" = {
-      #   source = ./raw-dots/kanshi;
-      #   recursive = true;
-      # };
-      ".config/kitty" = {
-        source = ./raw-dots/kitty;
         recursive = true;
       };
       ".config/rofi" = {
