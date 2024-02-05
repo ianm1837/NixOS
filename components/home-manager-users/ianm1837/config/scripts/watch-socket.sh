@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# watch for hyprland config reload and restart kanshi.
+# hyprland hijacks monitor settings 
 handle() {
   case $1 in
     configreloaded*) kanshictl reload ;;

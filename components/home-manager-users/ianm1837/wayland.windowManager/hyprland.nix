@@ -106,7 +106,7 @@
         "$mainMod, Space, exec, rofi -show drun"
         "$mainMod, P, pseudo, # dwindle"
         "$mainMod, J, togglesplit, # dwindle"
-        "$mainMod SHIFT, W, exec, /home/ianm1837/.config/hypr/scripts/restart-waybar.sh"
+        "$mainMod SHIFT, W, exec, /home/ianm1837/.config/scripts/restart-waybar.sh"
         "$mainMod, F1, exec, hyprctl reload && kanshictl reload"
         "$mainMod, F2, exec, kanshictl reload"
         # "$mainMod, L, exec, swaylock"
@@ -142,8 +142,8 @@
       exec-once = [
         "tee /sys/class/leds/tpacpi::kbd_backlight/brightness <<< 1"
         "kanshi & waybar & waypaper --restore & nm-applet --indicator & blueman-applet & hyprctl setcursor Bibata-Modern-Classic 24 &"
-        "~/.config/hypr/scripts/watch-socket.sh &"
-        "~/.config/hypr/scripts/startup-delay.sh"
+        "~/.config/scripts/watch-socket.sh &" # restart kanshi when hyprland is reset
+        "~/.config/scripts/startup-delay.sh"
         "swaylock"
       ];
     };
