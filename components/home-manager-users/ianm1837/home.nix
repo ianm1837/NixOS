@@ -76,11 +76,11 @@ in
         }
         chpwd_functions=(''${chpwd_functions[@]} "list_all")
       '';
-      profileExtra = ''
-        if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
-          exec Hyprland
-        fi
-      '';
+      # profileExtra = ''
+      #   if [ -z "$DISPLAY" ] && [ "$XDG_VTNR" = 1 ]; then
+      #     exec Hyprland > .hyprland.log.txt 2> .hyprland.err.txt
+      #   fi
+      # '';
       oh-my-zsh = {
         enable = true;
         theme = "robbyrussell";
@@ -139,10 +139,6 @@ in
       };
       ".config/waybar" = {
         source = ./raw-dots/waybar;
-        recursive = true;
-      };
-      ".config/swayidle" = {
-        source = ./raw-dots/swayidle;
         recursive = true;
       };
       ".config/wlogout" = {

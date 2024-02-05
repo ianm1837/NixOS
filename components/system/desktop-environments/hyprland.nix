@@ -27,8 +27,8 @@
     wantedBy = [ "multi-user.target" ];
   };
 
+
   programs = {
-    
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [
@@ -38,12 +38,10 @@
         tumbler
       ];
     };
-
     hyprland = {
       enable = true;
       xwayland.enable = true;
     };
-
     file-roller.enable = true;
   };
 
@@ -56,6 +54,18 @@
   services = {
     gvfs.enable = true;
     samba.enable = true;
+    xserver.enable = true;
+    xserver.displayManager.sddm = {
+      enable = true;
+      autoLogin.relogin = true;
+      wayland.enable = true;
+      settings = {
+        Autologin = {
+          Session = "hyprland.desktop";
+          User = "ianm1837";
+        };
+      };
+    };
   };
 
   environment.systemPackages = with pkgs; [
