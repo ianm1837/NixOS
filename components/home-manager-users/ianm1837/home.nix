@@ -9,6 +9,7 @@ in
 { 
   imports = [
     ./themes/${theme}.nix
+    ./programs/default.nix
     ./services/default.nix
     ./wayland.windowManager/${user-attributes.desktop-environment}.nix
   ];
@@ -32,8 +33,9 @@ in
       moonlight-qt
       pkgs-obsidian.obsidian #custom package to fix OpenGL issue
       neovim
-
     ];
+
+    # config files that don't make sense to configure with nix
     file = {
       ".config" = {
         source = ./config;
