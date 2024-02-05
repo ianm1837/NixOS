@@ -10,15 +10,11 @@ in
   imports = [
     ./themes/${theme}.nix
     ./services/default.nix
+    ./wayland.windowManager/${user-attributes.desktop-environment}.nix
   ];
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-  wayland.windowManager.hyprland = {
-    enable = true;
-    systemd.enable = true;
-    settings = import ./apps/hyprland/default.nix { inherit colors; };
-  };
 
   home = {
     stateVersion = "23.11"; # no touch

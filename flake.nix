@@ -27,7 +27,7 @@
     inherit (inputs.vscode-insiders.packages."${system}") vscode-insiders;
 
     user-attributes = {
-      desktop-environment = "hyprland";
+      desktop-environment = "hyprland"; #only support hyprland now
       colors = {};
     };
 
