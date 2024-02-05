@@ -35,20 +35,8 @@ in
 
     ];
     file = {
-      ".config/hypr/scripts" = {
-        source = ./raw-dots/hypr/scripts;
-        recursive = true;
-      };
-      ".config/rofi" = {
-        source = ./raw-dots/rofi;
-        recursive = true;
-      };
-      ".config/waybar" = {
-        source = ./raw-dots/waybar;
-        recursive = true;
-      };
-      ".config/wlogout" = {
-        source = ./raw-dots/wlogout;
+      ".config" = {
+        source = ./config;
         recursive = true;
       };
     };
