@@ -19,6 +19,7 @@
       buildInputs = oldAttrs.buildInputs ++ [ pkgs.krb5 ];
     });
   in (with pkgs; [
+    nixos-bgrt-plymouth
     code-insiders
     wget
     pciutils
