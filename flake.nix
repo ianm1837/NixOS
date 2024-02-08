@@ -14,6 +14,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    hyprland.url = "github:hyprwm/Hyprland";
+
     # specific obsidian repo for wayland compatibility. will be merged soon, need to check master asap.
     obsidian-package.url = "github:yshui/nixpkgs/obsidion-libgl";
 
@@ -27,7 +29,8 @@
     inherit (inputs.vscode-insiders.packages."${system}") vscode-insiders;
 
     user-attributes = {
-      desktop-environment = "hyprland"; #only support hyprland now
+      username = "ianm1837";
+      desktop-environment = "gnome"; #only support hyprland now
       colors = {};
     };
 

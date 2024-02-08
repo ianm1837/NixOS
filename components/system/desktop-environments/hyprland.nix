@@ -1,12 +1,26 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, lib, ... }: 
+
+# let
+#   flake-compat = builtins.fetchTarball {
+#     url = "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
+#     sha256 = "sha256:0m9grvfsbwmvgwaxvdzv6cmyvjnlww004gfxjvcl806ndqaxzy4j";
+#   };
+
+#   hyprland-flake = (import flake-compat {
+#     src = builtins.fetchTarball {
+#       url = "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+#       sha256 = "sha256:1azcab634qfqg5mww2qzccp07c73066wziq6h78dnzwg6wsq7m1p";
+#     };
+#   }).defaultNix;
+# in 
 
 {
   environment.sessionVariables.NIX_OZONE_WL = "1";
   hardware.opengl.enable = true;
 
   xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+    enable = false;
+    # extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
   };
 
   systemd.services.change-acpi-wakup-perms = {
@@ -40,6 +54,7 @@
     };
     hyprland = {
       enable = true;
+      # package = hyprland-flake.packages.${pkgs.system}.hyprland;
       xwayland.enable = true;
     };
     file-roller.enable = true;

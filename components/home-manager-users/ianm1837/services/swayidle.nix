@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user-attributes, ... }:
 
 {
   services.swayidle = {
@@ -23,7 +23,12 @@
     events = [
       {
         event = "before-sleep";
-        command = "${pkgs.swaylock-effects}/bin/swaylock";
+        command = "${pkgs.hyprland}/bin/hyprctl dispatch exec /home/${user-attributes.username}/.config/scripts/before-sleep.sh";
+      }
+      {
+        event = "after-resume";
+        # command = "${pkgs.swaylock-effects}/bin/swaylock";
+        command = "${pkgs.hyprland}/bin/hyprctl dispatch exec /home/${user-attributes.username}/.config/scripts/after-resume.sh";
       }
     ];
   };

@@ -12,16 +12,16 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
-  boot.loader.timeout = 0;
+  boot.loader.timeout = 1;
   
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-  boot.plymouth.enable = true;
+  boot.plymouth.enable = false;
   boot.plymouth.theme = "bgrt";
-  boot.initrd.verbose = false;
-  boot.consoleLogLevel = 0;
-  boot.kernelParams = [ "quiet" "udev.log_level=0" ];
+  boot.initrd.verbose = true;
+  boot.consoleLogLevel = 2;
+  # boot.kernelParams = [ "quiet" "udev.log_level=0" ];
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/58de483a-3da4-465d-b4bd-c3c83814082d";

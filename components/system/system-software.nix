@@ -1,7 +1,14 @@
 { config, pkgs, pkgs-obsidian, pkgs-vscode-insiders, ... }:
 
 {
-  services.flatpak.enable = true;
+  services.flatpak.enable = false;
+  services.kmscon.enable = true;
+  services.kmscon.fonts = [
+    { name = "JetBrainsMono NFM Regular"; package = pkgs.nerdfonts;}
+  ];
+  services.kmscon.extraConfig = "font-size=16";
+  services.kmscon.hwRender = true;
+#  services.kmscon.extraOptions = "--xterm xterm-256color";
 
   virtualisation.docker = {
     enable = true;

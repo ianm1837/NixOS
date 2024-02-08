@@ -1,12 +1,14 @@
-{ config, pkgs, pkgs-obsidian, user-attributes, ... }:
+{ config, pkgs, pkgs-obsidian, user-attributes, inputs, ... }:
 
 # beginning of theme management; need to pass from user-attributes and add themes as needed
 let 
   theme = "tokyo-night";
   homePath = "/home/ianm1837";
   colors = user-attributes.colors;
+  inherit user-attributes;
 in
 { 
+
   imports = [
     ./themes/${theme}.nix
     ./programs/default.nix

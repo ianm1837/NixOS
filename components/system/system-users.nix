@@ -15,7 +15,7 @@
   # services.getty.autologinUser = "ianm1837";
 
   home-manager = {
-    extraSpecialArgs = { inherit inputs; };
+    extraSpecialArgs = { inherit inputs user-attributes; };
 
     users = {
       "ianm1837" = import ../home-manager-users/ianm1837/home.nix { inherit config pkgs pkgs-obsidian inputs home-manager user-attributes; };
