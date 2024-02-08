@@ -3,7 +3,7 @@
 {
   imports = [
     ./kitty.nix
-    ./swaylock.nix
+    #./swaylock.nix
     ./zsh.nix
     ./misc.nix
   ];

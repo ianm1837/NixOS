@@ -10,10 +10,10 @@
 
   gtk = {
     enable = true;
-    theme = {
-      package = pkgs.tokyo-night-gtk;
-      name = "Tokyonight-Dark-B";
-    };
+    # theme = {
+    #   package = pkgs.tokyo-night-gtk;
+    #   name = "Tokyonight-Dark-B";
+    # };
 
     iconTheme = {
       package = pkgs.papirus-icon-theme;

@@ -3,6 +3,6 @@
 {
   programs = {
     lf.enable = true;
-    pywal.enable = true;
+    #pywal.enable = true;
   };
 }

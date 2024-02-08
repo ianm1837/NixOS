@@ -1,7 +1,7 @@
 { config, pkgs, pkgs-obsidian, pkgs-vscode-insiders, ... }:
 
 {
-  services.flatpak.enable = false;
+  services.flatpak.enable = true;
   services.kmscon.enable = true;
   services.kmscon.fonts = [
     { name = "JetBrainsMono NFM Regular"; package = pkgs.nerdfonts;}
@@ -46,5 +46,16 @@
     libGL # fix for obsidian
     dmidecode
     usbutils
+    python3
   ]);
+
+  fonts.packages = with pkgs; [
+    font-awesome
+    font-awesome_4
+    font-awesome_5
+    noto-fonts-color-emoji 
+    material-icons
+    symbola
+    nerdfonts
+  ];
 }
