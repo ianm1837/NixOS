@@ -13,6 +13,10 @@
             mode = "2560x1600@165";
           }
         ];
+        exec = [
+          "pkill waybar"
+          "waybar"
+        ];
       };
       one-monitor-a = {
         outputs = [
@@ -25,6 +29,10 @@
             status = "enable";
           }
         ];
+        exec = [
+          "pkill waybar"
+          "waybar"
+        ];
       };
       one-monitor-b = {
         outputs = [
@@ -36,6 +44,10 @@
             criteria = "DP-2";
             status = "enable";
           }
+        ];
+        exec = [
+          "pkill waybar"
+          "waybar"
         ];
       };
       both-monitors = {
@@ -54,6 +66,10 @@
             status = "enable";
             position = "2560,0";
           }
+        ];
+        exec = [
+          "pkill waybar"
+          "waybar"
         ];
       };
     };
