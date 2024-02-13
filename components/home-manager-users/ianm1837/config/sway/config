@@ -67,6 +67,7 @@ bindsym $mod+Q kill
 bindsym $mod+F4 exec wlogout
 bindsym $mod+F toggle floating
 bindsym $mod+Space exec rofi -show drun
+bindsym $mod+n exec ~/.config/sway/swayspace new
 
 bindsym $mod+shift+c reload
 
