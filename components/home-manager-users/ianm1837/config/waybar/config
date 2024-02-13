@@ -4,7 +4,7 @@
     "margin-left": 10,
     "margin-right": 10,
     "modules-left": ["wlr/taskbar"],
-    "modules-center": ["hyprland/workspaces"],
+    "modules-center": ["sway/workspaces"],
     "modules-right": ["battery", "pulseaudio", "tray", "clock"],
     "battery": {
         "format": "{capacity}% {icon}",
@@ -15,8 +15,9 @@
         "on-click-middle": "close",
         "icon-size": 16
     },
-    "hyprland/workspaces":{
-        "format": "{}"
+    "sway/workspaces":{
+        "format": "{}",
+        "all-outputs": true
     },
     "clock": {
         "format": "{:%I:%M %p}",

@@ -12,7 +12,6 @@
     shell = pkgs.zsh;
     packages = with pkgs; [];
   };
-  # services.getty.autologinUser = "ianm1837";
 
   home-manager = {
     extraSpecialArgs = { inherit inputs user-attributes; };

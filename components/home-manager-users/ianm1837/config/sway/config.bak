@@ -2,13 +2,11 @@
 exec dbus-update-activation-environment WAYLAND_DISPLAY
 exec echo 1 > /sys/class/leds/tpacpi::kbd_backlight/brightness
 exec kanshi & waybar & waypaper --restore & nm-applet --indicator & blueman-applet & swaymsg cursor set Bibata-Modern-Classic 24 &
-exec_always kanshictl reload
 exec ~/.config/hypr/scripts/watch-socket.sh &
 exec /usr/lib/polkit-kde-authentication-agent-1
 exec swayidle -w timeout 300 'swaylock && swaymsg "output * dpms off"' timeout 600 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'killall -s SIGUSR1 swaylock'
 # Startup delay script
 exec ~/.config/hypr/scripts/startup-delay.sh
-
 
 # Clipboard management with wl-clipboard
 exec wl-paste --type text --watch cliphist store
@@ -52,10 +50,10 @@ floating_modifier $mod normal
 # floating_modifier: normal
 # tiling_drag: enable
 
-input type:pointer {
+input type:mouse {
     accel_profile flat
     natural_scroll disabled
-    pointer_accel -0.1
+    pointer_accel 0.8
 }
 
 # Mouse configuration does not directly map, but sensitivity and accel can be adjusted in Sway.
@@ -67,8 +65,6 @@ bindsym $mod+Q kill
 bindsym $mod+F4 exec wlogout
 bindsym $mod+F toggle floating
 bindsym $mod+Space exec rofi -show drun
-
-bindsym $mod+shift+c reload
 
 # Workspace and window management
 bindsym $mod+h workspace prev

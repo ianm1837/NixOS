@@ -5,9 +5,9 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "us";
-    xkbVariant = "";
+    variant = "";
   };
 
   services.blueman.enable = true;

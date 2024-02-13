@@ -2,8 +2,7 @@
   description = "Gold Standard";
 
   inputs = {
-    # I like to live dangerously ¯\_(ツ)_/¯
-    nixpkgs.url = "nixpkgs/master";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,8 +12,6 @@
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland.url = "github:hyprwm/Hyprland";
 
     # specific obsidian repo for wayland compatibility. will be merged soon, need to check master asap.
     obsidian-package.url = "github:yshui/nixpkgs/obsidion-libgl";
@@ -26,11 +23,9 @@
   let
     system = "x86_64-linux";
 
-    inherit (inputs.vscode-insiders.packages."${system}") vscode-insiders;
-
     user-attributes = {
       username = "ianm1837";
-      desktop-environment = "gnome"; #only support hyprland now
+      desktop-environment = "sway";
       colors = {};
     };
 
