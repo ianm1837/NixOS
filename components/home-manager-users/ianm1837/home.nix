@@ -18,8 +18,6 @@ in
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
-  xdg.configFile."xfce.xfconf.xfce-perchannel-xml
-
   home = {
     stateVersion = "23.11"; # no touch
     username = "ianm1837";
