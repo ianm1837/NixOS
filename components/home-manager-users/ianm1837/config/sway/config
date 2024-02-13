@@ -1,8 +1,10 @@
 # In Sway, `exec` and `exec_always` are used to run commands at startup.
 exec dbus-update-activation-environment WAYLAND_DISPLAY
 exec echo 1 > /sys/class/leds/tpacpi::kbd_backlight/brightness
-exec kanshi & waybar & waypaper --restore & nm-applet --indicator & blueman-applet & swaymsg cursor set Bibata-Modern-Classic 24 &
+exec kanshi & waypaper --restore & nm-applet --indicator & blueman-applet & swaymsg cursor set Bibata-Modern-Classic 24 &
 exec_always kanshictl reload
+exec_always pkill waybar
+exec_always waybar
 exec ~/.config/hypr/scripts/watch-socket.sh &
 exec /usr/lib/polkit-kde-authentication-agent-1
 exec swayidle -w timeout 300 'swaylock && swaymsg "output * dpms off"' timeout 600 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'killall -s SIGUSR1 swaylock'
