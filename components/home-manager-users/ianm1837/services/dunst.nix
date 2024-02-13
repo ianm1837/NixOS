@@ -34,7 +34,7 @@
         markup = "full";
         format = "%s %p\\n%b";
         alignment = "left";
-        vertical_alignment = "center";
+        vertical_alignment = "right";
         show_age_threshold = 60;
         ellipsize = "middle";
         ignore_newline = "no";

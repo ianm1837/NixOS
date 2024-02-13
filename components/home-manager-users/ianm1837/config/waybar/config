@@ -17,7 +17,7 @@
     },
     "sway/workspaces":{
         "format": "{}",
-        "all-outputs": true
+        "all-outputs": false
     },
     "clock": {
         "format": "{:%I:%M %p}",

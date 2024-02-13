@@ -16,23 +16,23 @@ window#waybar {
         border-radius: 15px;
         border: 0px;
         font-style: normal;
-        color: rgba(120, 124, 153, 0);
+        color: #24283B;
 }
 #workspaces button {
         padding: 0px 5px;
         margin: 4px 3px;
         border-radius: 15px;
         border: 0px;
-        color: rgba(120, 124, 153, 0);
+        color: #24283B;
         background-color: rgba(120, 124, 153, 0.695);
         opacity: 1.0;
         transition: all 0.3s ease-in-out;
 }
-#workspaces button.active {
-        color: rgba(120, 124, 153, 0);
+#workspaces button.visible {
+        color: #24283B;
         background: #787C99;
         border-radius: 15px;
-        min-width: 40px;
+        /* min-width: 40px; */
         transition: all 0.3s ease-in-out;
         opacity: 1.0;
 }
