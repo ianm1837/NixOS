@@ -5,7 +5,7 @@
     enable = true;
     shellAliases = {
       top = "btop";
-      snr = "sudo nixos-rebuild switch --flake ~/.dotfiles";
+      snr = "sudo nixos-rebuild switch --flake ~/git/nixos";
     };
     initExtra = ''
       function list_all() {
