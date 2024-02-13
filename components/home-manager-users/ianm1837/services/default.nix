@@ -1,4 +1,4 @@
-{ user-attributes, ... }:
+{ user-attributes, pkgs, ... }:
 
 {
   imports = [

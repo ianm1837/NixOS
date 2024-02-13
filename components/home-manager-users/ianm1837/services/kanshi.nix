@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   services.kanshi = {
@@ -15,7 +15,8 @@
         ];
         exec = [
           "pkill waybar"
-          "waybar"
+          "${pkgs.swayfx}/bin/sway exec waybar"
+          "${pkgs.waybar}/bin/waybar"
         ];
       };
       one-monitor-a = {
@@ -31,7 +32,8 @@
         ];
         exec = [
           "pkill waybar"
-          "waybar"
+          "${pkgs.swayfx}/bin/sway exec waybar"
+          "${pkgs.waybar}/bin/waybar"
         ];
       };
       one-monitor-b = {
@@ -47,7 +49,8 @@
         ];
         exec = [
           "pkill waybar"
-          "waybar"
+          "${pkgs.swayfx}/bin/sway exec waybar"
+          "${pkgs.waybar}/bin/waybar"
         ];
       };
       both-monitors = {
@@ -69,7 +72,8 @@
         ];
         exec = [
           "pkill waybar"
-          "waybar"
+          "${pkgs.swayfx}/bin/sway exec waybar"
+          "${pkgs.waybar}/bin/waybar"
         ];
       };
     };
