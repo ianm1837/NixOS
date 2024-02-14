@@ -21,13 +21,13 @@ const focusedMonitor = arrOfWorkspaces.reduce((focusedMon, currentObj) => {
 
 async function createWorkspaceFocusedMonitor(){
     let dummy
-    await $`sway workspace ${highestNumber + 1} > /dev/null 2>&1`
+    await $`sway workspace ${highestNumber + 1}`
 }
 
 async function moveWindowToNewWorkspaceOnFocusedMonitor(){
     let dummy
     await $`sway move container to workspace ${highestNumber + 1}`
-    await $`notify-send 'sent window to ${highestNumber +1}`
+    await $`sway workspace ${highestNumber +1}`
 }
 
 
