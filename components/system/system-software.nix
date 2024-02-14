@@ -50,13 +50,13 @@
     jq
   ]);
 
-  fonts.packages = with pkgs; [
-    font-awesome
-    font-awesome_4
-    font-awesome_5
-    noto-fonts-color-emoji 
-    material-icons
-    symbola
-    nerdfonts
+  fonts.packages = [
+    pkgs.font-awesome
+    pkgs.font-awesome_4
+    pkgs.font-awesome_5
+    pkgs.noto-fonts-color-emoji 
+    pkgs.material-icons
+    pkgs.symbola
+    pkgs.nerdfonts
   ];
 }

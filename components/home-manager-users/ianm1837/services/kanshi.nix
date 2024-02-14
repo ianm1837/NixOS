@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, user-attributes, ... }:
 
 {
   services.kanshi = {
@@ -17,6 +17,7 @@
           "pkill waybar"
           "${pkgs.swayfx}/bin/sway exec waybar"
           "${pkgs.waybar}/bin/waybar"
+          "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
       one-monitor-a = {
@@ -34,6 +35,7 @@
           "pkill waybar"
           "${pkgs.swayfx}/bin/sway exec waybar"
           "${pkgs.waybar}/bin/waybar"
+          "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
       one-monitor-b = {
@@ -51,6 +53,7 @@
           "pkill waybar"
           "${pkgs.swayfx}/bin/sway exec waybar"
           "${pkgs.waybar}/bin/waybar"
+          "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
       both-monitors = {
@@ -74,6 +77,7 @@
           "pkill waybar"
           "${pkgs.swayfx}/bin/sway exec waybar"
           "${pkgs.waybar}/bin/waybar"
+          "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
     };

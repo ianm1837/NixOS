@@ -4,7 +4,7 @@
   imports = [
     ./kanshi.nix
     ./dunst.nix
-    ./swayidle.nix
+    #./swayidle.nix
     #./custom-resume.nix
   ];
 }

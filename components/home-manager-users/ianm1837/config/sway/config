@@ -1,7 +1,8 @@
 exec dbus-update-activation-environment WAYLAND_DISPLAY
+exec swww init && swww img ~/wallpapers/jase-bloor-oCZHIa1D4EU-unsplash.jpg
+
 exec echo 1 > /sys/class/leds/tpacpi::kbd_backlight/brightness
 exec kanshi & 
-exec waypaper --restore 
 exec nm-applet --indicator 
 exec blueman-applet 
 exec swaymsg cursor set Bibata-Modern-Classic 24
@@ -10,47 +11,50 @@ exec_always pkill waybar
 exec_always waybar
 
 exec /usr/lib/polkit-kde-authentication-agent-1
-exec swayidle -w timeout 300 'swaylock && swaymsg "output * dpms off"' timeout 600 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'killall -s SIGUSR1 swaylock'
+# exec swayidle -w timeout 300 'swaylock && swaymsg "output * dpms off"' timeout 600 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'killall -s SIGUSR1 swaylock'
 
-# exec mattermost-desktop -enable-features=UseOzonePlatform -ozone-platform=wayland
-# exec signal-desktop --start-in-tray --no-sandbox -enable-features=UseOzonePlatform -ozone-platform=wayland
-# Startup delay script
-exec ~/.config/sway/scripts/startup-delay.sh
-
-
-# Clipboard management with wl-clipboard
 exec wl-paste --type text --watch cliphist store
 exec wl-paste --type image --watch cliphist store
 
-# Environment variables
-set $XCURSOR_SIZE 24
-set $mod Mod4
+exec ~/.config/sway/scripts/startup-delay.sh
+
+# Theme
+    font pango: SF Pro Display 14
+
+    for_window [class="^.*"] border pixel 3
+    default_border pixel 3
+    default_floating_border pixel 3
+
+    #swayfx specific
+    corner_radius 10
+
+    client.focused           #9aa5ce #16161d #c0caf5 #9aa5ce   #9aa5ce
+    client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
+    client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
 
 
-# window options
 
-# remove window titlebars
-# default_border none
-# default_floating_border none
-# font pango:monospace 0
-# titlebar_padding 1
-# titlebar_border_thickness 0
 
-corner_radius 10
+# variables
+    set $XCURSOR_SIZE 24
+    set $mod Mod4
+
+
 
 
 # Keyboard configuration
-input * xkb_layout us
-# To set options, rules, or variants, use `xkb_options`, `xkb_rules`, or `xkb_variant`.
-input * xkb_options caps:escape
+    input * xkb_layout us
+
+    #set caps lock as escape
+    input * xkb_options caps:escape
 
 # Touchpad configuration
-input type:touchpad {
-    dwt enabled
-    tap enabled
-    natural_scroll enabled
-    scroll_factor 0.25
-}
+    input type:touchpad {
+        dwt enabled
+        tap enabled
+        natural_scroll enabled
+        scroll_factor 0.25
+    }
 
 floating_modifier $mod normal
 

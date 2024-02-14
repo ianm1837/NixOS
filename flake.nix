@@ -27,6 +27,7 @@
       username = "ianm1837";
       desktop-environment = "sway";
       colors = {};
+      wallpaper = "~/wallpapers/jase-bloor-oCZHIa1D4EU-unsplash.jpg";
     };
 
     pkgs-options = input: {
