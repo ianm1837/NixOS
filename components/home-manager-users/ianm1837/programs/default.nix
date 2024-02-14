@@ -6,5 +6,6 @@
     ./swaylock.nix
     ./zsh.nix
     ./misc.nix
+    ./neovim.nix
   ];
 }
