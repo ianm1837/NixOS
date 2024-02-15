@@ -6,6 +6,7 @@
     shellAliases = {
       top = "btop";
       snr = "sudo nixos-rebuild switch --flake ~/git/nixos";
+      v = "nvim .";
     };
     initExtra = ''
       function list_all() {

@@ -75,6 +75,7 @@ bindsym $mod+C exec code --enable-features=UseOzonePlatform --ozone-platform=way
 bindsym $mod+Q kill
 bindsym $mod+F4 exec wlogout
 bindsym $mod+F toggle floating
+bindsym $mod+V exec kitty -e nvim ~
 bindsym $mod+Space exec rofi -show drun
 
 # workspace management
@@ -94,10 +95,10 @@ bindsym $mod+shift+c reload
 
 
 # Audio and backlight controls
-bindsym XF86MonBrightnessUp exec backlight_control +10
-bindsym XF86MonBrightnessDown exec backlight_control -10
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86MonBrightnessUp exec xbacklight -ctrl amdgpu_bl0 -fps 60 -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -ctrl amdgpu_bl0 -fps 60 -dec 10
+bindsym XF86AudioRaiseVolume exec pamixer -i 5
+bindsym XF86AudioLowerVolume exec pamixer -d 5
 
 gaps inner 10
 gaps outer 10

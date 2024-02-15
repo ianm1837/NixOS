@@ -32,8 +32,8 @@
         font = "Monospace 10";
         line_height = 0;
         markup = "full";
-        # format = "%s %p\\n%b";
-        format = "%a\\n%p\\n%b";
+        format = "<span font_weight=\"ultrabold\">%s</span>\\n %p\\n%b";
+        # format = "%a\\n%p\\n%b";
         alignment = "left";
         vertical_alignment = "center";
         show_age_threshold = 60;
@@ -41,7 +41,7 @@
         ignore_newline = "no";
         stack_duplicates = "true";
         hide_duplicate_count = "false";
-        show_indicators = "yes";
+        show_indicators = "false";
         icon_position = "left";
         min_icon_size = 0;
         max_icon_size = 64;
