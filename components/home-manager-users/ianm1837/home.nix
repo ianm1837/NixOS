@@ -33,7 +33,6 @@ in
       scribus
       moonlight-qt
       pkgs-obsidian.obsidian #custom package to fix OpenGL issue
-      pamixer
       acpilight
     ];
 
