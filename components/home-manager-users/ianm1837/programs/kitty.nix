@@ -5,7 +5,7 @@
     enable = true;
     font = {
       name = "JetBrainsMono NFM Regular"; #kitty list-fonts
-      size = 16;
+      size = 14;
     };
     keybindings = {
       "ctrl+equal" = "change_font_size all +2.0";
