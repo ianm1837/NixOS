@@ -14,9 +14,8 @@
           }
         ];
         exec = [
-          "pkill waybar"
+          "${pkgs.swayfx}/bin/sway exec pkill waybar"
           "${pkgs.swayfx}/bin/sway exec waybar"
-          "${pkgs.waybar}/bin/waybar"
           "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
@@ -32,9 +31,8 @@
           }
         ];
         exec = [
-          "pkill waybar"
+          "${pkgs.swayfx}/bin/sway exec pkill waybar"
           "${pkgs.swayfx}/bin/sway exec waybar"
-          "${pkgs.waybar}/bin/waybar"
           "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
@@ -50,9 +48,8 @@
           }
         ];
         exec = [
-          "pkill waybar"
+          "${pkgs.swayfx}/bin/sway exec pkill waybar"
           "${pkgs.swayfx}/bin/sway exec waybar"
-          "${pkgs.waybar}/bin/waybar"
           "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
@@ -74,9 +71,8 @@
           }
         ];
         exec = [
-          "pkill waybar"
+          "${pkgs.swayfx}/bin/sway exec pkill waybar"
           "${pkgs.swayfx}/bin/sway exec waybar"
-          "${pkgs.waybar}/bin/waybar"
           "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
