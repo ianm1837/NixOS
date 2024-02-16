@@ -13,13 +13,15 @@
       {
         plugin = nvim-tree-lua;
         type = "lua";
-        config = "require(\"nvim-tree\").setup()";
+        config = ''
+          require("nvim-tree").setup()
+        
+        '';
       }
       {
         plugin = catppuccin-nvim;
+        type = "lua";
         config = ''
-          colorscheme catppuccin
-
           require("catppuccin").setup({
             transparent_background = true,
           })

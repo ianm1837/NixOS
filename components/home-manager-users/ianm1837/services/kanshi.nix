@@ -14,8 +14,7 @@
           }
         ];
         exec = [
-          "${pkgs.swayfx}/bin/sway exec pkill waybar"
-          "${pkgs.swayfx}/bin/sway exec waybar"
+          "${pkgs.swayfx}/bin/sway exec ~/.config/sway/scripts/restart-waybar.sh"
           "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
@@ -31,8 +30,7 @@
           }
         ];
         exec = [
-          "${pkgs.swayfx}/bin/sway exec pkill waybar"
-          "${pkgs.swayfx}/bin/sway exec waybar"
+          "${pkgs.swayfx}/bin/sway exec ~/.config/sway/scripts/restart-waybar.sh"
           "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
@@ -48,8 +46,7 @@
           }
         ];
         exec = [
-          "${pkgs.swayfx}/bin/sway exec pkill waybar"
-          "${pkgs.swayfx}/bin/sway exec waybar"
+          "${pkgs.swayfx}/bin/sway exec ~/.config/sway/scripts/restart-waybar.sh"
           "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
@@ -71,8 +68,7 @@
           }
         ];
         exec = [
-          "${pkgs.swayfx}/bin/sway exec pkill waybar"
-          "${pkgs.swayfx}/bin/sway exec waybar"
+          "${pkgs.swayfx}/bin/sway exec ~/.config/sway/scripts/restart-waybar.sh"
           "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
         ];
       };
