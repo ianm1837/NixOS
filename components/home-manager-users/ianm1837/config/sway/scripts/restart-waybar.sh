@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 
-pkill waybar && waybar
+dbus-update-activation-environment WAYLAND_DISPLAY
+pkill waybar
+waybar &
