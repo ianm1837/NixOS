@@ -34,6 +34,7 @@ in
       moonlight-qt
       pkgs-obsidian.obsidian #custom package to fix OpenGL issue
       acpilight
+      ranger
     ];
 
     # config files that don't make sense to configure with nix

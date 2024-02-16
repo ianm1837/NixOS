@@ -16,8 +16,14 @@
         config = "require(\"nvim-tree\").setup()";
       }
       {
-        plugin = tokyonight-nvim;
-        config = "colorscheme tokyonight";
+        plugin = catppuccin-nvim;
+        config = ''
+          colorscheme catppuccin
+
+          require("catppuccin").setup({
+            transparent_background = true,
+          })
+        '';
       }
     ];
 
