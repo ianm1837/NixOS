@@ -7,5 +7,6 @@
     ./zsh.nix
     ./misc.nix
     ./neovim.nix
+    ./tmux.nix
   ];
 }

@@ -35,6 +35,7 @@ in
       pkgs-obsidian.obsidian #custom package to fix OpenGL issue
       acpilight
       ranger
+      fzf
     ];
 
     # config files that don't make sense to configure with nix
