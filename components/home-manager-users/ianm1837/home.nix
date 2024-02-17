@@ -36,6 +36,7 @@ in
       acpilight
       ranger
       fzf
+      lazygit
     ];
 
     # config files that don't make sense to configure with nix

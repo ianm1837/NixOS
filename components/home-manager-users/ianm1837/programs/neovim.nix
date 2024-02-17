@@ -7,6 +7,7 @@
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    withNodeJs = true;
 
     plugins = with pkgs.vimPlugins; [
       nvim-web-devicons
@@ -25,48 +26,45 @@
         '';
       }
       {
+        plugin = vim-tmux-navigator;
+      }
+      {
         plugin = catppuccin-nvim;
         type = "lua";
         config = ''
           require("catppuccin").setup({
-            transparent_background = true,
+            flavour = "macchiato",
+            term_colors = true,
+            integrations = {
+              nvimtree = true,
+            }
+          })
+                 
+          vim.cmd.colorscheme "catppuccin"
+        '';
+      }
+      {
+        plugin = feline-nvim;
+        type = "lua";
+        config = ''
+          local ctp_feline = require('catppuccin.groups.integrations.feline')
+
+          require("feline").setup({
+              components = ctp_feline.get(),
           })
         '';
       }
       {
         plugin = fzf-lua;
       }
-      {
-        plugin = toggleterm-nvim;
-        type = "lua";
-        config = ''
-          require("toggleterm").setup({
-            size = 20,
-            open_mapping = [[c-j]],
-            hide_numbers = true,
-            shade_filetypes = {},
-            shade_terminals = true,
-            shading_factor = 2,
-            start_in_insert = true,
-            insert_mappings = true,
-            persist_size = true,
-            direction = "float",
-            close_on_exit = true,
-            shell = vim.o.shell,
-            float_opts = {
-              border = "curved",
-              winblend = 0,
-              highlights = {
-                border = "Normal",
-                background = "Normal",
-                },
-              },
-          })
-        '';
-      }
+
     ];
 
     extraLuaConfig = ''
+      -- theme
+
+
+
       -- Basic settings
       vim.o.relativenumber = true        -- Show line numbers
       vim.o.syntax = "on"        -- Enable syntax highlighting
