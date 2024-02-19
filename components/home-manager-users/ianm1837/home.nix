@@ -6,6 +6,16 @@ let
   homePath = "/home/ianm1837";
   colors = user-attributes.colors;
   inherit user-attributes;
+
+  custom-obsidian-desktop = pkgs.makeDesktopItem {
+    categories = ["Office"];
+    comment = "Knowledge base";
+    icon = "obsidian";
+    mimeTypes = ["x-scheme-handler/obsidian"];
+    name = "obsidian wayland";
+    desktopName = "Obsidian Wayland";
+    exec = "${pkgs.obsidian}/bin/obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland";
+  };
 in
 { 
   imports = [
@@ -33,10 +43,14 @@ in
       scribus
       moonlight-qt
       pkgs-obsidian.obsidian #custom package to fix OpenGL issue
+      custom-obsidian-desktop
       acpilight
       ranger
       fzf
       lazygit
+      nixd
+      nodePackages.typescript-language-server
+      xorg.xeyes
     ];
 
     # config files that don't make sense to configure with nix
