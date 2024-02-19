@@ -6,7 +6,7 @@
     shellAliases = {
       top = "btop";
       snr = "sudo nixos-rebuild switch --flake ~/git/nixos";
-      v = "nvim .";
+      v = "nvf";
     };
     initExtra = ''
       function list_all() {
@@ -14,6 +14,16 @@
           ls -a
       }
       chpwd_functions=(''${chpwd_functions[@]} "list_all")
+
+      nvf() {
+        if [[ $# -eq 0 ]]; then
+          nvim .
+        else
+          nvim "$@"
+            fi
+      }
+
+      tmux attach
     '';
     oh-my-zsh = {
       enable = true;
