@@ -60,11 +60,13 @@
             criteria = "GIGA-BYTE TECHNOLOGY CO., LTD. Gigabyte M32Q 0x00000583";
             status = "enable";
             position = "0,0";
+            scale = 1.25;
           }
           {
             criteria = "GIGA-BYTE TECHNOLOGY CO., LTD. Gigabyte M32Q 0x00000228";
             status = "enable";
-            position = "2560,0";
+            position = "2048,0";
+            scale = 1.25;
           }
         ];
         exec = [
