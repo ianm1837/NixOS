@@ -8,7 +8,6 @@ exec blueman-applet
 exec swaymsg cursor set Bibata-Modern-Classic 24
 exec_always kanshictl reload
 
-
 exec /usr/lib/polkit-kde-authentication-agent-1
 # exec swayidle -w timeout 300 'swaylock && swaymsg "output * dpms off"' timeout 600 'systemctl suspend' resume 'swaymsg "output * dpms on"' before-sleep 'killall -s SIGUSR1 swaylock'
 
@@ -19,18 +18,16 @@ exec ~/.config/sway/scripts/startup-delay.sh
 exec_always ~/.config/sway/scripts/restart-waybar.sh
 
 # Theme
-    font pango: SF Pro Display 14
+    #font pango: SF Pro Display 14
 
     for_window [class="^.*"] border pixel 3
-    default_border pixel 3
-    default_floating_border pixel 3
-
+    #default_border pixel 2
+    #default_floating_border pixel 2
     #swayfx specific
-    corner_radius 10
 
-    client.focused           #9aa5ce #16161d #c0caf5 #9aa5ce   #9aa5ce
-    client.focused_inactive  #16161d #16161d #c0caf5 #16161d   #16161d
-    client.unfocused         #16161d #16161d #c0caf5 #16161d   #16161d
+    client.focused           9aa5ce 9aa5ce 9aa5ce 9aa5ce 9aa5ce
+    client.focused_inactive  16161d 16161d c0caf5 16161d 16161d
+    client.unfocused         16161d 16161d c0caf5 16161d 16161d
 
 
 
@@ -47,6 +44,10 @@ exec_always ~/.config/sway/scripts/restart-waybar.sh
 
     #set caps lock as escape
     input * xkb_options caps:escape
+    input type:keyboard {
+      repeat_delay 250
+      repeat_rate 50
+    }
 
 # Touchpad configuration
     input type:touchpad {

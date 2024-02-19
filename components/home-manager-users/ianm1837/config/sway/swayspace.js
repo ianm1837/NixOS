@@ -15,17 +15,17 @@ const highestNumber = arrOfWorkspaces.reduce((highestNum, currentObj) => {
     return currentNum > highestNum ? currentNum : highestNum;
 }, parseInt(arrOfWorkspaces[0].name));
 
-const focusedMonitor = arrOfWorkspaces.reduce((focusedMon, currentObj) => {
-    return currentObj.focused ? currentObj.output : focusedMon.output
-})
+console.log('highestNumber: ', highestNumber)
+
+//const focusedMonitor = arrOfWorkspaces.reduce((focusedMon, currentObj) => {
+//    return currentObj.focused ? currentObj.output : focusedMon.output
+//})
 
 async function createWorkspaceFocusedMonitor(){
-    let dummy
     await $`sway workspace ${highestNumber + 1}`
 }
 
 async function moveWindowToNewWorkspaceOnFocusedMonitor(){
-    let dummy
     await $`sway move container to workspace ${highestNumber + 1}`
     await $`sway workspace ${highestNumber +1}`
 }
