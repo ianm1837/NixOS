@@ -3,7 +3,7 @@
 {
   wayland.windowManager.sway = {
     enable = true;
-    package = pkgs.swayfx;
+    package = pkgs.sway;
     xwayland = true;
 
   };
