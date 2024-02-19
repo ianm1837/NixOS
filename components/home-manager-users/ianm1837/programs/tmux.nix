@@ -8,23 +8,33 @@
     terminal = "screen-256color";
     newSession = true;
     sensibleOnTop = false;
-    plugins = with pkgs; [
-      {
-        plugin = tmuxPlugins.vim-tmux-navigator;
-      }
-      {
-        plugin = tmuxPlugins.catppuccin;
-      }
-      {
-        plugin = tmuxPlugins.resurrect;
-      }
-      {
-        plugin = tmuxPlugins.continuum;
-      }
-      {
-        plugin = tmuxPlugins.cpu;
-      }
-
+    plugins = with pkgs.tmuxPlugins; [
+        vim-tmux-navigator
+        cpu
+        {
+          plugin = catppuccin;
+          extraConfig = '' 
+            set -g @catppuccin_flavour 'frappe'
+            set -g @catppuccin_window_tabs_enabled on
+            set -g @catppuccin_date_time "%H:%M"
+            '';
+        }
+        {
+          plugin = resurrect;
+          extraConfig = ''
+            set -g @resurrect-strategy-vim 'session'
+            set -g @resurrect-strategy-nvim 'session'
+            set -g @resurrect-capture-pane-contents 'on'
+        '';
+        }
+        {
+          plugin = continuum;
+          extraConfig = ''
+            set -g @continuum-restore 'on'
+            set -g @continuum-boot 'on'
+            set -g @continuum-save-interval '10'
+          '';
+        }
     ];
     extraConfig = ''
         set -g prefix C-a
@@ -47,8 +57,7 @@
 
         bind -r m resize-pane -Z
 
-
-        
+        set-option -g default-command "$SHELL"
     '';
   };
 }
