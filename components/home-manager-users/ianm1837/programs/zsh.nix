@@ -7,6 +7,8 @@
       top = "btop";
       snr = "sudo nixos-rebuild switch --flake ~/git/nixos";
       v = "nvf";
+      lg = "lazygit";
+      ta = "tmux attach";
     };
     initExtra = ''
       function list_all() {
@@ -23,7 +25,6 @@
             fi
       }
 
-      tmux attach
     '';
     oh-my-zsh = {
       enable = true;
