@@ -11,6 +11,7 @@
 
     plugins = with pkgs.vimPlugins; [
       nvim-web-devicons
+
       {
         plugin = nvim-lspconfig;
         type = "lua";
@@ -74,7 +75,20 @@
       {
         plugin = fzf-lua;
       }
-
+      {
+        plugin = bufferline-nvim;
+        type = "lua";
+        config = ''
+          require("bufferline").setup{
+            options = {
+              separator_style = "slant",
+              offsets = {
+	      	{filetype = "NvimTree", text = "File Explorer", text_align = "center"}
+		},
+            },
+          }
+        '';
+      }
     ];
 
     extraLuaConfig = ''
@@ -124,6 +138,7 @@
       })
 
      -- Basic settings
+      vim.opt.termguicolors = true
       vim.o.relativenumber = true        -- Show line numbers
       vim.o.syntax = "on"        -- Enable syntax highlighting
       vim.wo.wrap = false        -- Disable text wrapping
