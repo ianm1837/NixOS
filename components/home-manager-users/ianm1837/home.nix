@@ -51,6 +51,7 @@ in
       nixd
       nodePackages.typescript-language-server
       xorg.xeyes
+      neovim
     ];
 
     # config files that don't make sense to configure with nix
