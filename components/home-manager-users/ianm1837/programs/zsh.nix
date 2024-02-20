@@ -7,6 +7,10 @@
       top = "btop";
       snr = "sudo nixos-rebuild switch --flake ~/git/nixos";
       v = "nvf";
+      nvim = "nvf";
+      vim = "nvf";
+      vimdiff = "nvf";
+      vi = "nvf";
       lg = "lazygit";
       ta = "tmux attach";
     };
@@ -19,10 +23,10 @@
 
       nvf() {
         if [[ $# -eq 0 ]]; then
-          nvim .
+          steam-run nvim .
         else
-          nvim "$@"
-            fi
+          steam-run nvim "$@"
+        fi
       }
 
     '';
