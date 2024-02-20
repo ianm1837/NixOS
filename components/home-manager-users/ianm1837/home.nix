@@ -51,7 +51,11 @@ in
       nixd
       nodePackages.typescript-language-server
       xorg.xeyes
-      neovim
+      python3
+      nodejs
+      ruby
+      steam-run
+      neovim-unwrapped
     ];
 
     # config files that don't make sense to configure with nix
