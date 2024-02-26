@@ -32,6 +32,11 @@ in {
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    package = pkgs.neovim-unwrapped;
+  };
 
   home = {
     stateVersion = "23.11"; # no touch
@@ -57,7 +62,6 @@ in {
       neovide
       alacritty
       nil
-      neovim-unwrapped
       alejandra
     ];
 
