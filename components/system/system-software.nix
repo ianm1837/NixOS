@@ -15,6 +15,62 @@
     rootless.enable = true;
   };
 
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs;  [
+    #list of misssing dynamic libraries
+    alsa-lib
+    at-spi2-atk
+    at-spi2-core
+    atk
+    cairo
+    cups
+    curl
+    dbus
+    expat
+    fontconfig
+    freetype
+    fuse3
+    gdk-pixbuf
+    glib
+    gtk3
+    icu
+    libGL
+    libappindicator-gtk3
+    libdrm
+    libglvnd
+    libnotify
+    libpulseaudio
+    libunwind
+    libusb1
+    libuuid
+    libxkbcommon
+    libxml2
+    mesa
+    nspr
+    nss
+    openssl
+    pango
+    pipewire
+    stdenv.cc.cc
+    systemd
+    vulkan-loader
+    xorg.libX11
+    xorg.libXScrnSaver
+    xorg.libXcomposite
+    xorg.libXcursor
+    xorg.libXdamage
+    xorg.libXext
+    xorg.libXfixes
+    xorg.libXi
+    xorg.libXrandr
+    xorg.libXrender
+    xorg.libXtst
+    xorg.libxcb
+    xorg.libxkbfile
+    xorg.libxshmfence
+    zlib 
+  ];
+
   environment.systemPackages = let
 #    code-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
  #     src = (builtins.fetchTarball {
@@ -47,7 +103,13 @@
     dmidecode
     usbutils
     python3
+    nodePackages.neovim
+    nodePackages_latest.nodejs
+    cargo
+    gcc
     jq
+    curl
+    # (curl.overrideAttrs(oldAttrs: {configureFlags = oldAttrs.configureFlags ++ ["--with-ca-path=/etc/ssl/certs"];}))
   ]);
 
   fonts.packages = [
