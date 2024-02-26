@@ -23,9 +23,9 @@
 
       nvf() {
         if [[ $# -eq 0 ]]; then
-          steam-run nvim .
+          nvim
         else
-          steam-run nvim "$@"
+          nvim "$@"
         fi
       }
 
