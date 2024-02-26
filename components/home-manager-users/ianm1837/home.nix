@@ -1,7 +1,13 @@
-{ config, pkgs, pkgs-obsidian, user-attributes, inputs, ... }:
-
+{
+  config,
+  pkgs,
+  pkgs-obsidian,
+  user-attributes,
+  inputs,
+  ...
+}:
 # beginning of theme management; need to pass from user-attributes and add themes as needed
-let 
+let
   theme = "tokyo-night";
   homePath = "/home/ianm1837";
   colors = user-attributes.colors;
@@ -16,8 +22,7 @@ let
     desktopName = "Obsidian Wayland";
     exec = "${pkgs.obsidian}/bin/obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland";
   };
-in
-{ 
+in {
   imports = [
     ./themes/${theme}.nix
     ./programs/default.nix
@@ -32,8 +37,9 @@ in
     stateVersion = "23.11"; # no touch
     username = "ianm1837";
     homeDirectory = "${homePath}";
+    sessionPath = ["${homePath}/.local/bin"];
     packages = with pkgs; [
-#      vscode
+      #      vscode
       brave
       mattermost-desktop
       signal-desktop
@@ -46,16 +52,13 @@ in
       custom-obsidian-desktop
       acpilight
       ranger
-      fzf
       lazygit
-      nixd
-      nodePackages.typescript-language-server
       xorg.xeyes
-      python3
-      nodejs
-      ruby
-      steam-run
+      neovide
+      alacritty
+      nil
       neovim-unwrapped
+      alejandra
     ];
 
     # config files that don't make sense to configure with nix
