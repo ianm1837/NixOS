@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env bash
 # commands to run when computer resumes from sleep
 
-swaylock
+swaymsg 'output * dpms on'
