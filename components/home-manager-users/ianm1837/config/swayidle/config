@@ -1,3 +1,4 @@
 timeout 600 ~/.config/swayidle/scripts/on_idle.sh resume ~/.config/swayidle/scripts/on_resume.sh
 timeout 900 ~/.config/swayidle/scripts/on_suspend.sh 
+before-sleep ~/.config/swayidle/scripts/on_before_sleep.sh
 after-resume ~/.config/swayidle/scripts/on_after_resume.sh
