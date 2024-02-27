@@ -42,11 +42,13 @@ exec_always ~/.config/sway/scripts/restart-waybar.sh
 # Keyboard configuration
     input * xkb_layout us
 
+    
     #set caps lock as escape
     input * xkb_options caps:escape
     input type:keyboard {
       repeat_delay 250
       repeat_rate 50
+      xkb_numlock enabled
     }
 
 # Touchpad configuration
