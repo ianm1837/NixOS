@@ -15,6 +15,8 @@
     rootless.enable = true;
   };
 
+  programs.adb.enable = true;
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs;  [
     #list of misssing dynamic libraries
@@ -109,6 +111,7 @@
     gcc
     jq
     curl
+    pcmanfm-qt
     # (curl.overrideAttrs(oldAttrs: {configureFlags = oldAttrs.configureFlags ++ ["--with-ca-path=/etc/ssl/certs"];}))
   ]);
 
