@@ -63,6 +63,10 @@ in {
       alacritty
       nil
       alejandra
+      ripgrep
+      android-tools
+      chromium
+      swayidle
     ];
 
     # config files that don't make sense to configure with nix
