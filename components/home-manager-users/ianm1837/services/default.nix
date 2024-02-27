@@ -6,6 +6,5 @@
     ./dunst.nix
     #./swayidle.nix
     #./custom-resume.nix
-    ./shutdown-scripts.nix
   ];
 }
