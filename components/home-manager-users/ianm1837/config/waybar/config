@@ -1,19 +1,22 @@
 {
     "layer": "top",
-    "margin-top": 7,
-    "margin-left": 10,
-    "margin-right": 10,
-    "modules-left": ["wlr/taskbar"],
-    "modules-center": ["sway/workspaces"],
+    "position": "bottom",
+    "margin-left": 0,
+    "margin-right": 0,
+    "margin-top": 0,
+    "margin-bottom": 0,
+    "height": 50, 
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["wlr/taskbar"],
     "modules-right": ["battery", "pulseaudio", "tray", "clock"],
     "battery": {
-        "format": "{capacity}% {icon}",
+        "format": "<span>{capacity}%&#x2009;{icon}</span>",
         "format-icons": ["", "", "", "", ""]
     },
     "wlr/taskbar": {
         "on-click": "activate",
         "on-click-middle": "close",
-        "icon-size": 16
+        "icon-size": 38
     },
     "sway/workspaces":{
         "format": "{}",
@@ -24,11 +27,12 @@
         "format-alt": "{:%a, %b %d  %I:%M %p}"
     },
     "tray": {
-        "spacing": 5
+        "spacing": 5,
+        "icon-size": 16
     },
     "pulseaudio": {
-        "format": "{volume}% {icon}",
-        "format-bluetooth": "{volume}% {icon}",
+        "format": "<span>{volume}%&#x2009;{icon}</span>",
+        "format-bluetooth": "<span>{volume}%&#x2009;{icon}</span>",
         "format-muted": "",
         "format-icons": {
              "headphones": "",

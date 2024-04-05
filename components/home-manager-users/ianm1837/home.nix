@@ -1,5 +1,5 @@
 {
-  config,
+  # config,
   pkgs,
   pkgs-obsidian,
   user-attributes,
@@ -10,7 +10,7 @@
 let
   theme = "tokyo-night";
   homePath = "/home/ianm1837";
-  colors = user-attributes.colors;
+  # colors = user-attributes.colors;
   inherit user-attributes;
 
   custom-obsidian-desktop = pkgs.makeDesktopItem {
@@ -41,6 +41,9 @@ in {
   home = {
     stateVersion = "23.11"; # no touch
     username = "ianm1837";
+    sessionVariables = {
+      NIX_OZONE_WL = "1";
+    };
     homeDirectory = "${homePath}";
     sessionPath = ["${homePath}/.local/bin"];
     packages = with pkgs; [
@@ -58,6 +61,7 @@ in {
       acpilight
       ranger
       lazygit
+      lazydocker
       xorg.xeyes
       neovide
       alacritty
@@ -67,6 +71,13 @@ in {
       android-tools
       chromium
       swayidle
+      swaybg
+      freecad
+      drawio
+      syncthingtray
+      syncthing
+      resilio-sync
+      filezilla
     ];
 
     # config files that don't make sense to configure with nix

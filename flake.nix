@@ -4,6 +4,10 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
+    # hyprland.url = "github:hyprwm/Hyprland";
+
+    # ondsel.url = "github:pinpox/ondsel-nix";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -15,7 +15,7 @@
         ];
         exec = [
           "${pkgs.swayfx}/bin/sway exec ~/.config/sway/scripts/restart-waybar.sh"
-          "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
+          "${pkgs.swaybg}/bin/swaybg -i ${user-attributes.wallpaper}"
         ];
       };
       one-monitor-a = {
@@ -31,7 +31,7 @@
         ];
         exec = [
           "${pkgs.swayfx}/bin/sway exec ~/.config/sway/scripts/restart-waybar.sh"
-          "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
+          "${pkgs.swaybg}/bin/swaybg -i ${user-attributes.wallpaper}"
         ];
       };
       one-monitor-b = {
@@ -47,7 +47,7 @@
         ];
         exec = [
           "${pkgs.swayfx}/bin/sway exec ~/.config/sway/scripts/restart-waybar.sh"
-          "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
+          "${pkgs.swaybg}/bin/swaybg -i ${user-attributes.wallpaper}"
         ];
       };
       both-monitors = {
@@ -71,7 +71,7 @@
         ];
         exec = [
           "${pkgs.swayfx}/bin/sway exec ~/.config/sway/scripts/restart-waybar.sh"
-          "${pkgs.swww}/bin/swww img ${user-attributes.wallpaper}"
+          "${pkgs.swaybg}/bin/swaybg -i ${user-attributes.wallpaper}"
         ];
       };
     };

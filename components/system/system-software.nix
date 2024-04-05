@@ -1,7 +1,13 @@
-{ config, pkgs, pkgs-obsidian, pkgs-vscode-insiders, ... }:
-
 {
-  #services.flatpak.enable = true;
+  # config,
+  # inputs,
+  pkgs,
+  # pkgs-obsidian,
+  # pkgs-vscode-insiders,
+  ...
+}: {
+  # hardware rendered terminal. Doesn't appear to be compatible with running sway
+  #
   # services.kmscon.enable = true;
   # services.kmscon.fonts = [
   #   { name = "JetBrainsMono NFM Regular"; package = pkgs.nerdfonts;}
@@ -15,10 +21,12 @@
     rootless.enable = true;
   };
 
+  programs.hyprland.enable = true;
+
   programs.adb.enable = true;
 
   programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs;  [
+  programs.nix-ld.libraries = with pkgs; [
     #list of misssing dynamic libraries
     alsa-lib
     at-spi2-atk
@@ -70,21 +78,11 @@
     xorg.libxcb
     xorg.libxkbfile
     xorg.libxshmfence
-    zlib 
+    zlib
   ];
 
-  environment.systemPackages = let
-#    code-insiders = (pkgs.vscode.override { isInsiders = true; }).overrideAttrs (oldAttrs: rec {
- #     src = (builtins.fetchTarball {
-  #      url = "https://code.visualstudio.com/sha/download?build=insider&os=linux-x64";
-   #     sha256 = "0pk0iqmjpfa9qan6cy20af792k6d20029ms57ha26ca8i9r056ky";
-    #  });
-     # version = "latest";
-      #buildInputs = oldAttrs.buildInputs ++ [ pkgs.krb5 ];
-    #});
-  in (with pkgs; [
+  environment.systemPackages = with pkgs; [
     nixos-bgrt-plymouth
-#    code-insiders
     vscode
     wget
     pciutils
@@ -92,9 +90,8 @@
     gh
     distrobox
     libreoffice-fresh
-    libsForQt5.bismuth
     direnv
-    kitty 
+    kitty
     unzip
     killall
     qpwgraph
@@ -111,15 +108,17 @@
     gcc
     jq
     curl
+    wireguard-tools
+    sshfs
     pcmanfm-qt
     # (curl.overrideAttrs(oldAttrs: {configureFlags = oldAttrs.configureFlags ++ ["--with-ca-path=/etc/ssl/certs"];}))
-  ]);
+  ];
 
   fonts.packages = [
     pkgs.font-awesome
     pkgs.font-awesome_4
     pkgs.font-awesome_5
-    pkgs.noto-fonts-color-emoji 
+    pkgs.noto-fonts-color-emoji
     pkgs.material-icons
     pkgs.symbola
     pkgs.nerdfonts

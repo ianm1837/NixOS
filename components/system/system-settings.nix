@@ -1,14 +1,18 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   system.stateVersion = "23.11"; #no touch
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
+
+  networking.wireguard.enable = true;
 
   services.blueman.enable = true;
   services.passSecretService.enable = true;
@@ -22,6 +26,15 @@
   };
 
   time.timeZone = "America/Los_Angeles";
+
+  # theme
+  environment.systemPackages = with pkgs; [
+    adwaita-qt
+  ];
+
+  environment.sessionVariables = {
+    QT_STYLE_OVERRIDE = "adwaita-dark";
+  };
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
