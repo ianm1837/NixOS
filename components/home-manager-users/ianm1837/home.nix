@@ -53,9 +53,8 @@ in {
       signal-desktop
       angryipscanner
       btop
-      bun
       scribus
-      moonlight-qt
+      # moonlight-qt
       pkgs-obsidian.obsidian #custom package to fix OpenGL issue
       custom-obsidian-desktop
       acpilight

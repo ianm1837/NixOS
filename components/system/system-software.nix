@@ -25,6 +25,8 @@
 
   programs.adb.enable = true;
 
+  services.flatpak.enable = true;
+
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     #list of misssing dynamic libraries
@@ -110,7 +112,9 @@
     curl
     wireguard-tools
     sshfs
+    stow
     pcmanfm-qt
+    hyprpaper
     # (curl.overrideAttrs(oldAttrs: {configureFlags = oldAttrs.configureFlags ++ ["--with-ca-path=/etc/ssl/certs"];}))
   ];
 
