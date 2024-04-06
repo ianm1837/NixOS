@@ -90,6 +90,7 @@
     pciutils
     git
     gh
+    google-chrome
     distrobox
     libreoffice-fresh
     direnv

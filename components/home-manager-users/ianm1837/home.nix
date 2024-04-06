@@ -80,11 +80,12 @@ in {
     ];
 
     # config files that don't make sense to configure with nix
-    file = {
-      ".config" = {
-        source = ./config;
-        recursive = true;
-      };
-    };
+    # ---- These are now managed with stow
+    # file = {
+    #   ".config" = {
+    #     source = ./config;
+    #     recursive = true;
+    #   };
+    # };
   };
 }
