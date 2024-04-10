@@ -2,7 +2,7 @@
   description = "Gold Standard";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/master";
 
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
