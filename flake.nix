@@ -62,8 +62,7 @@
           inputs.home-manager.nixosModules.default
           inputs.auto-cpufreq.nixosModules.default
           ./hardware-configuration.nix
-          ./components/system
-          ./components/system/desktop-environments/${user-attributes.desktop-environment}.nix
+          ./system-configuration.nix
         ];
       };
     };

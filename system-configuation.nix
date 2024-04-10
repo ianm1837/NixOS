@@ -10,6 +10,9 @@
     flatpak.enable = true;
     openssh.enable = true;
     printing.enable = true;
+    gvfs.enable = true;
+    samba.enable = true;
+    dbus.enable = true;
     blueman.enable = true;
     passSecretService.enable = true;
     xserver.libinput.enable = true;
@@ -29,11 +32,44 @@
     '';
   };
 
+  systemd = {
+    services = {
+      change-acpi-wakup-perms = {
+        enable = true;
+        description = "Change permissoins of /proc/acpi/wakeup";
+        unitConfig = {
+        };
+        serviceConfig = {
+          Type = "oneshot";
+          ExecStart = [
+            ""
+            "/run/current-system/sw/bin/chmod 0666 /proc/acpi/wakeup"
+            "/run/current-system/sw/bin/bash -c 'echo XHC0 > /proc/acpi/wakeup'"
+            "/run/current-system/sw/bin/bash -c 'echo XHC1 > /proc/acpi/wakeup'"
+          ];
+          RemainAfterExit = "yes";
+        };
+        wantedBy = [ "multi-user.target" ];
+      };
+    };
+  };
+
   programs = {
     hyprland.enable = true;
     zsh.enable = true;
     adb.enable = true;
     auto-cpufreq.enable = true;
+    dconf.enable = true;
+    thunar = {
+      enable = true;
+      plugins = with pkgs.xfce; [
+        thunar-archive-plugin 
+        thunar-volman 
+        thunar-media-tags-plugin 
+        tumbler
+      ];
+    };
+    file-roller.enable = true;
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
@@ -92,47 +128,96 @@
       ];
     };
   };
-  
-  environment.systemPackages = with pkgs; [
-    adwaita-qt
-    bruno
-    nixos-bgrt-plymouth
-    dunst
-    vscode
-    wget
-    pciutils
-    git
-    gh
-    google-chrome
-    distrobox
-    libreoffice-fresh
-    direnv
-    kitty
-    unzip
-    killall
-    qpwgraph
-    wev
-    hwinfo
-    socat
-    swayfx
-    libGL # fix for obsidian
-    dmidecode
-    usbutils
-    python3
-    nodePackages.neovim
-    nodePackages_latest.nodejs
-    cargo
-    gcc
-    jq
-    curl
-    wireguard-tools
-    sshfs
-    stow
-    tmux
-    speedtest-cli
-    pcmanfm-qt
-    hyprpaper
-  ];
+
+  environment = {
+
+    sessionVariables = {
+      QT_STYLE_OVERRIDE = "adwaita-dark";
+    };
+
+    systemPackages = with pkgs; [
+      adwaita-qt
+      bruno
+      nixos-bgrt-plymouth
+      dunst
+      vscode
+      wget
+      pciutils
+      git
+      gh
+      google-chrome
+      distrobox
+      libreoffice-fresh
+      direnv
+      kitty
+      unzip
+      killall
+      qpwgraph
+      wev
+      hwinfo
+      socat
+      swayfx
+      libGL # fix for obsidian
+      dmidecode
+      usbutils
+      python3
+      nodePackages.neovim
+      nodePackages_latest.nodejs
+      cargo
+      gcc
+      jq
+      curl
+      wireguard-tools
+      sshfs
+      stow
+      tmux
+      speedtest-cli
+      pcmanfm-qt
+      hyprpaper
+      # sway related packages
+      dunst
+      libnotify
+      rofi-wayland
+      kanshi
+      blueman
+      pavucontrol
+      libpulseaudio
+      gnome.gnome-keyring
+      swww
+      waypaper
+      gtk3
+      gtk4
+      polkit-kde-agent
+      hyprpicker
+      grim
+      slurp
+      grimblast
+      wl-clipboard
+      wlogout
+      waybar
+      networkmanagerapplet
+      wlr-randr
+      gnome.dconf-editor
+    ];
+  };
+
+  imports = [ inputs.home-manager.nixosModules.default ];
+
+  users.users.ianm1837 = {
+    isNormalUser = true;
+    description = "ianm1837";
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" "adbusers" ];
+    shell = pkgs.zsh;
+    packages = with pkgs; [];
+  };
+
+  home-manager = {
+    extraSpecialArgs = { inherit inputs user-attributes; };
+
+    users = {
+      "ianm1837" = import ../home-manager-users/ianm1837/home-manager-config.nix { inherit config pkgs pkgs-obsidian inputs home-manager user-attributes; };
+    };
+  };
 
   fonts.packages = [
     pkgs.font-awesome
@@ -157,8 +242,25 @@
     opengl.enable = true;
   };
 
+  security = {
+    polkit.enable = true;
+    rtkit.enable = true; #realtime kit. Hardware scheduling for audio
+    pam.services.swaylock = {
+      text = ''
+        auth include login
+      '';
+    };
+  };
+
+  xdg.portal = {
+    enable = true;
+    config.common.default = "*";
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
   sound.enable = true;
-  security.rtkit.enable = true; #realtime kit. Hardware scheduling for audio
 
   # system settings
 
@@ -175,10 +277,6 @@
   };
 
   time.timeZone = "America/Los_Angeles";
-
-  environment.sessionVariables = {
-    QT_STYLE_OVERRIDE = "adwaita-dark";
-  };
 
   i18n = {
     defaultLocale = "en_US.UTF-8";
