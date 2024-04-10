@@ -117,6 +117,7 @@
     wireguard-tools
     sshfs
     stow
+    tmux
     speedtest-cli
     pcmanfm-qt
     hyprpaper
