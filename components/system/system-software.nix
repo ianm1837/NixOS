@@ -86,6 +86,7 @@
   environment.systemPackages = with pkgs; [
     bruno
     nixos-bgrt-plymouth
+    dunst
     vscode
     wget
     pciutils

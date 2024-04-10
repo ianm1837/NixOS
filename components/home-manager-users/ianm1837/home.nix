@@ -26,7 +26,6 @@ in {
   imports = [
     ./themes/${theme}.nix
     ./programs/default.nix
-    ./services/default.nix
     ./wayland.windowManager/${user-attributes.desktop-environment}.nix
   ];
 
