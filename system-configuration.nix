@@ -1,4 +1,6 @@
-{ pkgs, config, pkgs-obsidian, inputs, home-manager, user-attributes, ... }: {
+{ pkgs, nixpkgs, ... }: {
+
+  nixpkgs.config.allowUnfree = true;
 
   virtualisation.docker = {
     enable = true;
