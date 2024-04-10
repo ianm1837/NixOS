@@ -26,7 +26,6 @@ in {
   imports = [
     ./themes/${theme}.nix
     ./programs/default.nix
-    ./wayland.windowManager/${user-attributes.desktop-environment}.nix
   ];
 
   # Let Home Manager install and manage itself.

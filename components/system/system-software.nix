@@ -103,6 +103,7 @@
     wev
     hwinfo
     socat
+    swayfx
     libGL # fix for obsidian
     dmidecode
     usbutils
