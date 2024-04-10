@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, config, pkgs-obsidian, inputs, home-manager, user-attributes, ... }: {
 
   virtualisation.docker = {
     enable = true;
