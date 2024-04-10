@@ -47,7 +47,6 @@ in {
     homeDirectory = "${homePath}";
     sessionPath = ["${homePath}/.local/bin"];
     packages = with pkgs; [
-      #      vscode
       brave
       mattermost-desktop
       signal-desktop
@@ -68,7 +67,6 @@ in {
       alejandra
       ripgrep
       android-tools
-      chromium
       swayidle
       swaybg
       freecad
@@ -81,11 +79,12 @@ in {
 
     # config files that don't make sense to configure with nix
     # ---- These are now managed with stow
-    # file = {
-    #   ".config" = {
-    #     source = ./config;
-    #     recursive = true;
-    #   };
-    # };
+    file = {
+      ".config" = {
+        enable = false;
+        source = ./config;
+        recursive = true;
+      };
+    };
   };
 }

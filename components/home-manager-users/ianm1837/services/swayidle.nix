@@ -2,7 +2,7 @@
 
 {
   services.swayidle = {
-    enable = true;
+    enable = false;
     systemdTarget = "hyprland-session.target";
     timeouts = [
       {

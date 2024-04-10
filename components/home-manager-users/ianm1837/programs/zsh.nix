@@ -31,6 +31,9 @@
 
       export BUN_INSTALL="$HOME/.bun" 
       export PATH="$BUN_INSTALL/bin:$PATH" 
+
+      # fix for miniflare/wrangler
+      export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
     '';
     oh-my-zsh = {
       enable = true;

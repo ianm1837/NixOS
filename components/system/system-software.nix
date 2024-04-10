@@ -84,6 +84,7 @@
   ];
 
   environment.systemPackages = with pkgs; [
+    bruno
     nixos-bgrt-plymouth
     vscode
     wget
@@ -114,6 +115,7 @@
     wireguard-tools
     sshfs
     stow
+    speedtest-cli
     pcmanfm-qt
     hyprpaper
     # (curl.overrideAttrs(oldAttrs: {configureFlags = oldAttrs.configureFlags ++ ["--with-ca-path=/etc/ssl/certs"];}))
