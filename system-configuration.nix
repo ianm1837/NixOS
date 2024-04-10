@@ -215,7 +215,7 @@
     extraSpecialArgs = { inherit inputs user-attributes; };
 
     users = {
-      "ianm1837" = import ../home-manager-users/ianm1837/home-manager-config.nix { inherit config pkgs pkgs-obsidian inputs home-manager user-attributes; };
+      "ianm1837" = import ./home-manager-config.nix { inherit config pkgs pkgs-obsidian inputs home-manager user-attributes; };
     };
   };
 
