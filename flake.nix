@@ -4,14 +4,11 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
 
-    # hyprland.url = "github:hyprwm/Hyprland";
-
-    # ondsel.url = "github:pinpox/ondsel-nix";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     auto-cpufreq = {
       url = "github:AdnanHodzic/auto-cpufreq";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -64,7 +61,7 @@
         modules = [ 
           inputs.home-manager.nixosModules.default
           inputs.auto-cpufreq.nixosModules.default
-          ./components/hardware
+          ./hardware-configuration.nix
           ./components/system
           ./components/system/desktop-environments/${user-attributes.desktop-environment}.nix
         ];

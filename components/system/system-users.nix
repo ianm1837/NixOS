@@ -3,8 +3,6 @@
 {
   imports = [ inputs.home-manager.nixosModules.default ];
 
-  programs.zsh.enable = true;
-  
   users.users.ianm1837 = {
     isNormalUser = true;
     description = "ianm1837";

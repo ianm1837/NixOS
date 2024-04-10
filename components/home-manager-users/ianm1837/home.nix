@@ -1,16 +1,11 @@
 {
-  # config,
   pkgs,
   pkgs-obsidian,
   user-attributes,
   inputs,
   ...
 }:
-# beginning of theme management; need to pass from user-attributes and add themes as needed
 let
-  theme = "tokyo-night";
-  homePath = "/home/ianm1837";
-  # colors = user-attributes.colors;
   inherit user-attributes;
 
   custom-obsidian-desktop = pkgs.makeDesktopItem {
@@ -23,17 +18,79 @@ let
     exec = "${pkgs.obsidian}/bin/obsidian --enable-features=UseOzonePlatform --ozone-platform=wayland";
   };
 in {
-  imports = [
-    ./themes/${theme}.nix
-    ./programs/default.nix
-  ];
 
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-  programs.neovim = {
+  programs = {
+    home-manager.enable = true;
+    neovim = {
+      enable = true;
+      defaultEditor = true;
+      package = pkgs.neovim-unwrapped;
+    };
+    zsh = {
+      enable = true;
+      shellAliases = {
+        top = "btop";
+        snr = "sudo nixos-rebuild switch --flake ~/git/nixos";
+        v = "nvf";
+        nvim = "nvf";
+        vim = "nvf";
+        vimdiff = "nvf";
+        vi = "nvf";
+        lg = "lazygit";
+        ta = "tmux attach";
+      };
+      initExtra = ''
+        function list_all() {
+            emulate -L zsh
+            ls -a
+        }
+        chpwd_functions=(''${chpwd_functions[@]} "list_all")
+
+        nvf() {
+          if [[ $# -eq 0 ]]; then
+            nvim
+          else
+            nvim "$@"
+          fi
+        }
+
+        export BUN_INSTALL="$HOME/.bun" 
+        export PATH="$BUN_INSTALL/bin:$PATH" 
+
+        # fix for miniflare/wrangler
+        export SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+      '';
+      oh-my-zsh = {
+        enable = true;
+        theme = "robbyrussell";
+        plugins = [
+          "sudo"
+          "systemadmin"
+          "docker"
+          "docker-compose"
+          "bun"
+          "dotenv"
+          "git"
+          "vscode"
+        ];
+      };
+    };
+  };
+
+  gtk = {
     enable = true;
-    defaultEditor = true;
-    package = pkgs.neovim-unwrapped;
+    theme = {
+      package = pkgs.tokyo-night-gtk;
+      name = "Tokyonight-Dark-B";
+    };
+    iconTheme = {
+      package = pkgs.papirus-icon-theme;
+      name = "Papirus-Dark";
+    };
+    font = {
+      name = "Sans";
+      size = 11;
+    };
   };
 
   home = {
@@ -42,8 +99,14 @@ in {
     sessionVariables = {
       NIX_OZONE_WL = "1";
     };
-    homeDirectory = "${homePath}";
-    sessionPath = ["${homePath}/.local/bin"];
+    homeDirectory = "/home/ianm1837";
+    sessionPath = ["/home/ianm1837/.local/bin"];
+    pointerCursor = {
+      gtk.enable = true;
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 24;
+    };
     packages = with pkgs; [
       brave
       mattermost-desktop
@@ -51,7 +114,7 @@ in {
       angryipscanner
       btop
       scribus
-      # moonlight-qt
+      # moonlight-qt # package is broken, installed with flatpak
       pkgs-obsidian.obsidian #custom package to fix OpenGL issue
       custom-obsidian-desktop
       acpilight
@@ -74,15 +137,5 @@ in {
       resilio-sync
       filezilla
     ];
-
-    # config files that don't make sense to configure with nix
-    # ---- These are now managed with stow
-    file = {
-      ".config" = {
-        enable = false;
-        source = ./config;
-        recursive = true;
-      };
-    };
   };
 }
