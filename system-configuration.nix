@@ -163,6 +163,7 @@
       python3
       nodePackages.neovim
       nodePackages_latest.nodejs
+      obsidian
       cargo
       gcc
       jq
@@ -198,10 +199,34 @@
       networkmanagerapplet
       wlr-randr
       gnome.dconf-editor
+      #packages from old home manager
+      brave
+      mattermost-desktop
+      signal-desktop
+      angryipscanner
+      btop
+      scribus
+      # moonlight-qt # package is broken, installed with flatpak
+      acpilight
+      ranger
+      lazygit
+      lazydocker
+      neovide
+      alacritty
+      nil
+      alejandra
+      ripgrep
+      android-tools
+      swayidle
+      swaybg
+      freecad
+      drawio
+      syncthingtray
+      syncthing
+      resilio-sync
+      filezilla
     ];
   };
-
-  imports = [ inputs.home-manager.nixosModules.default ];
 
   users.users.ianm1837 = {
     isNormalUser = true;
@@ -209,14 +234,6 @@
     extraGroups = [ "networkmanager" "wheel" "docker" "video" "adbusers" ];
     shell = pkgs.zsh;
     packages = with pkgs; [];
-  };
-
-  home-manager = {
-    extraSpecialArgs = { inherit inputs user-attributes; };
-
-    users = {
-      "ianm1837" = import ./home-manager-config.nix { inherit config pkgs pkgs-obsidian inputs home-manager user-attributes; };
-    };
   };
 
   fonts.packages = [
@@ -262,11 +279,14 @@
 
   sound.enable = true;
 
-  # system settings
-
   system.stateVersion = "23.11"; #no touch
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = {
+    experimental-features = ["nix-command" "flakes"];
+    allowed-users = [
+      "ianm1837"
+    ];
+  };
 
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
