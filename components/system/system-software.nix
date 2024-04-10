@@ -94,6 +94,7 @@
   };
   
   environment.systemPackages = with pkgs; [
+    adwaita-qt
     bruno
     nixos-bgrt-plymouth
     dunst
@@ -174,10 +175,6 @@
   };
 
   time.timeZone = "America/Los_Angeles";
-
-  environment.systemPackages = with pkgs; [
-    adwaita-qt
-  ];
 
   environment.sessionVariables = {
     QT_STYLE_OVERRIDE = "adwaita-dark";
