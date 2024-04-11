@@ -154,6 +154,7 @@
       speedtest-cli
       hyprpaper
       mattermost-desktop
+      mongodb-compass
       signal-desktop
       angryipscanner
       btop
@@ -224,7 +225,7 @@
     config.common.default = "*";
     wlr.enable = true;
     # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
   };
 
   sound.enable = true;
