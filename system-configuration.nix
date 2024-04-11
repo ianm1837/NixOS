@@ -1,9 +1,5 @@
 { pkgs, nixpkgs, ... }: {
 
-  imports = [
-    ./nix-alien.nix
-  ];
-
   nixpkgs.config.allowUnfree = true;
 
   virtualisation = {
