@@ -210,13 +210,7 @@
   };
 
   security = {
-    polkit.enable = true;
     rtkit.enable = true; #realtime kit. Hardware scheduling for audio
-    pam.services.swaylock = {
-      text = ''
-        auth include login
-      '';
-    };
   };
 
   xdg.portal = {
