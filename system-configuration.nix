@@ -2,10 +2,22 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  virtualisation.docker = {
-    enable = true;
-    enableOnBoot = true;
-    rootless.enable = true;
+  virtualisation = {
+    docker = {
+      enable = true;
+      enableOnBoot = true;
+      rootless.enable = true;
+    };
+    libvirtd = {
+      enable = true;
+      qemu = {
+        package = pkgs.qemu_kvm;
+        swtpm.enable = true;
+        ovmf.enable = true;
+        ovmf.packages = [pkgs.OVMFFull.fd ];
+      };
+    };
+    spiceUSBRedirection.enable = true;
   };
 
   services = {
@@ -61,6 +73,7 @@
 
   programs = {
     hyprland.enable = true;
+    virt-manager.enable = true;
     zsh.enable = true;
     adb.enable = true;
     auto-cpufreq.enable = true;
@@ -166,8 +179,6 @@
       dmidecode
       usbutils
       python3
-      nodePackages.neovim
-      nodePackages_latest.nodejs
       obsidian
       cargo
       gcc
@@ -230,13 +241,18 @@
       syncthing
       resilio-sync
       filezilla
+      # virtualization tools
+      spice
+      spice-gtk
+      spice-protocol
+      virt-viewer
     ];
   };
 
   users.users.ianm1837 = {
     isNormalUser = true;
     description = "ianm1837";
-    extraGroups = [ "networkmanager" "wheel" "docker" "video" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" "video" "adbusers" "libvirtd" ];
     shell = pkgs.zsh;
     packages = with pkgs; [];
   };
