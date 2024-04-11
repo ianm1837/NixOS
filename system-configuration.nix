@@ -25,7 +25,6 @@
     openssh.enable = true;
     printing.enable = true;
     dbus.enable = true;
-    blueman.enable = true;
     passSecretService.enable = true;
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true;
