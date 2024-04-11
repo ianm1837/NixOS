@@ -18,6 +18,7 @@
     blueman.enable = true;
     passSecretService.enable = true;
     desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
     displayManager.sddm.wayland.enable = true;
     xserver.libinput.enable = true;
     xserver.xkb = {
