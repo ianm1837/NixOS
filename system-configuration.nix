@@ -1,5 +1,9 @@
 { pkgs, nixpkgs, ... }: {
 
+  imports = [
+    ./nix-alien.nix
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   virtualisation = {
@@ -24,8 +28,6 @@
     flatpak.enable = true;
     openssh.enable = true;
     printing.enable = true;
-    gvfs.enable = true;
-    samba.enable = true;
     dbus.enable = true;
     blueman.enable = true;
     passSecretService.enable = true;
@@ -43,10 +45,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
-    udev.extraRules = ''
-      SUBSYSTEM=="backlight", ACTION=="add", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/backlight/%k/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/backlight/%k/brightness"
-      SUBSYSTEM=="leds", ACTION=="add", KERNEL=="*::kbd_backlight", RUN+="${pkgs.coreutils}/bin/chgrp video /sys/class/leds/%k/brightness", RUN+="${pkgs.coreutils}/bin/chmod g+w /sys/class/leds/%k/brightness"
-    '';
   };
 
   systemd = {
@@ -72,22 +70,9 @@
   };
 
   programs = {
-    hyprland.enable = true;
     virt-manager.enable = true;
     zsh.enable = true;
     adb.enable = true;
-    auto-cpufreq.enable = true;
-    dconf.enable = true;
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [
-        thunar-archive-plugin 
-        thunar-volman 
-        thunar-media-tags-plugin 
-        tumbler
-      ];
-    };
-    file-roller.enable = true;
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
@@ -148,16 +133,7 @@
   };
 
   environment = {
-
-    sessionVariables = {
-      QT_STYLE_OVERRIDE = "adwaita-dark";
-    };
-
     systemPackages = with pkgs; [
-      adwaita-qt
-      bruno
-      nixos-bgrt-plymouth
-      dunst
       vscode
       wget
       pciutils
@@ -165,23 +141,14 @@
       gh
       google-chrome
       distrobox
-      libreoffice-fresh
-      direnv
-      kitty
       unzip
       killall
       qpwgraph
-      wev
       hwinfo
       socat
-      swayfx
-      libGL # fix for obsidian
-      dmidecode
       usbutils
       python3
       obsidian
-      cargo
-      gcc
       jq
       curl
       wireguard-tools
@@ -189,53 +156,19 @@
       stow
       tmux
       speedtest-cli
-      pcmanfm-qt
       hyprpaper
-      # sway related packages
-      dunst
-      libnotify
-      rofi-wayland
-      kanshi
-      blueman
-      pavucontrol
-      libpulseaudio
-      gnome.gnome-keyring
-      swww
-      waypaper
-      gtk3
-      gtk4
-      polkit-kde-agent
-      hyprpicker
-      grim
-      slurp
-      grimblast
-      wl-clipboard
-      wlogout
-      waybar
-      networkmanagerapplet
-      wlr-randr
-      gnome.dconf-editor
-      #packages from old home manager
-      brave
       mattermost-desktop
       signal-desktop
       angryipscanner
       btop
-      scribus
       # moonlight-qt # package is broken, installed with flatpak
-      acpilight
-      ranger
       lazygit
       lazydocker
       neovide
       alacritty
       nil
-      alejandra
       ripgrep
       android-tools
-      swayidle
-      swaybg
-      freecad
       drawio
       syncthingtray
       syncthing
