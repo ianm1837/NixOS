@@ -68,6 +68,10 @@
     virt-manager.enable = true;
     zsh.enable = true;
     adb.enable = true;
+    neovim = {
+      enable = true;
+      package = pkgs.neovim-unwrapped;
+    };
     nix-ld = {
       enable = true;
       libraries = with pkgs; [
@@ -129,7 +133,14 @@
 
   environment = {
     systemPackages = with pkgs; [
+      # devtools
       vscode
+      gcc
+      alejandra
+      fd
+      tree-sitter
+      # ---
+      wl-clipboard
       wget
       pciutils
       git
@@ -151,7 +162,6 @@
       stow
       tmux
       speedtest-cli
-      hyprpaper
       mattermost-desktop
       mongodb-compass
       signal-desktop
@@ -174,6 +184,7 @@
       spice
       spice-gtk
       spice-protocol
+      wev
       virt-viewer
     ];
   };
